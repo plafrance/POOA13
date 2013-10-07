@@ -10,15 +10,15 @@ uses
 
 type
 
-  // Le serveur traite les requêtes du client
+   //Un serveur HTTP minimaliste, supportant la méthode GET du protocole HTTP 1.1 uniquement.
   Serveur = class
 
     // Le chemin par lequel les requêtes sont envoyées au serveur
     // et les réponses sont retournées au client
-    laConnexion: ConnexionHTTPServeur;
+    laConnexion : ConnexionHTTPServeur;
 
-    // Le protocole par lequel les requêtes sont traitées
-    leProtocole: Protocole;
+    // Le protocole HTTP par lequel les requêtes sont traitées
+    leProtocole : Protocole;
 
     // Permet d'initialiser le serveur en créant la connexion et le protocole
     // @param unPort le numéro du port sur lequel le serveur écoute les requêtes
@@ -42,7 +42,7 @@ implementation
 
     // Affichage d'un message pour confirmer l'initialisation du serveur
     // FormatDateTime('c', now) permet d'afficher la date sous la forme jj/mm/aaaa hh:mm:ss
-    writeln(formatDateTime('c', now),' le serveur est demarré sur le port : ',unPort);
+    writeln('[',formatDateTime('c', now),'] le serveur est demarré sur le port ',unPort,'.');
   end;
 
 
@@ -54,16 +54,16 @@ implementation
     // Boucler infiniment
     while true do
     begin
-      // Envoi de la requête
+      // Ouvre la connexion et attend une requête
       uneRequete := laConnexion.lireRequete;
 
       // Message de confirmation de la réception de la requête
-      writeln(uneRequete.dateReception,' Requête reçue de ',uneRequete.adresseDemandeur);
+      writeln('[',formatDateTime('c', uneRequete.dateReception),'] Requête reçue de ',uneRequete.adresseDemandeur,'.');
 
-      // La reponse reçoit le traitement de la requête
+      // Le protocole traite la requête
       uneReponse := leProtocole.traiterRequete(uneRequete);
 
-      // Envoi de la reponse de la requête reçu
+      // Renvoie de la reponse au client
       laconnexion.ecrireReponse(uneReponse);
 
       // Fermeture de la connexion
