@@ -9,7 +9,8 @@ uses
 uses
 
 // Conversion d'un string en entier et vérifier si un intervalle est respecté
-// @param min, max: les bornes de l'intervalle
+// @param min limite inférieure de l'intervalle
+// @param max: limite supérieure de l'intervalle
 // @param nbrChaine: la chaine de caractère à convertire
 
 function valideEntier( min, max: Integer; nbrChaine: String; ): Integer;
