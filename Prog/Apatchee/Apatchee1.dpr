@@ -8,32 +8,6 @@ uses
 
 uses
 
-   // Conversion d'un string en entier et vérifier si un intervalle est respecté
-   // @param min limite inférieure de l'intervalle
-   // @param max: limite supérieure de l'intervalle
-   // @param nbrChaine: la chaine de caractère à convertire
-
-   function valideEntier( min, max: Integer; nbrChaine: String; ): Integer;
-   var
-      nombre, controle : Integer;
-   begin
-      // Désactive le contrôle des erreurs d'E/S
-      {$I-}
-
-      nombre := strToInt( nbrChaine );
-      controle := IOResult;
-      if ( controle <> 0 ) or ( nombre < min ) or ( nombre > max ) then
-      begin
-         writeln( 'Le numéro de port doit respecter l''intervalle [',min,'..',max,']' );
-         halt;
-      end;
-
-      // Active le contrôle des erreurs d'E/S
-      {$I+}
-      result := nombre;
-   end;
-
-
 var
    numeroDuPort: Word;
    leServeur: Serveur;
@@ -73,8 +47,18 @@ begin
                halt;
             end
             else
-               numeroPort:=valideEntier(1,65535,paramStr(2));
-         end;
+      // Désactive le contrôle des erreurs d'E/S pour la conversion
+      {$I-}
+      numeroDuPort := strToInt( paramStr(2) );
+      controle := IOResult;
+      if ( controle <> 0 ) or ( numeroDuPort < 1 ) or ( numeroDuPort > 65535 ) then
+      begin
+         writeln( 'Le numéro de port doit respecter l''intervalle [1, 65535]' );
+         halt;
+      end;
+      // Active le contrôle des erreurs d'E/S
+      {$I+}
+               end;
 
    end; // Fin de case
 
@@ -87,4 +71,3 @@ begin
    // Démarrage du serveur
    leServeur.demarrer;
 end.
-
