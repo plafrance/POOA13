@@ -1,0 +1,1725 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:date="http://exslt.org/dates-and-times">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--
+              This file is generated from xml source: DO NOT EDIT
+      -->
+    <title>Travaux pratiques Automne 2013 - Planner</title>
+    <meta name="GENERATOR" content="Planner HTML output" />
+    <style type="text/css">
+
+/* CSS Stylesheet for Planner HTML output.
+ * 
+ * Copyright (C) 2004-2005 Imendio AB
+ * Copyright (C) 2003 CodeFactory AB
+ * Copyright (C) 2003 Daniel Lundin (daniel@edgewall.com)
+ * Copyright (C) 2004 Chris Ladd (caladd@particlestorm.net)
+ */
+
+/*
+ * Fonts 
+ */
+html,body,table { 
+ font-family: "Bitstream Vera Sans", helvetica, Arial, sans-serif;
+ font-size: 12px;
+ white-space: nowrap;
+}
+
+tr,td,th,table,font,span,div,h1,h2,h3 {
+ font-family: "Bitstream Vera Sans", helvetica, Arial, sans-serif;
+}
+
+h1 {
+ font-size: 16px;
+}
+
+h2 {
+ font-size: 12px;
+ margin-bottom: 2px;
+}
+
+div.separator {
+ margin: 1em;
+}
+
+/*
+ * Header
+ */
+table.proj-header {
+ border: 0;
+ margin: 0;
+ width: auto;
+}
+
+table.proj-header .header {
+ font-weight: bold;
+}
+
+/*
+ * Footer
+ */
+.footer {
+ float: left;
+ width: 100%;
+ margin-top: 50px;  
+ padding-top: 2px;
+ border-style: dotted;
+ border-width: 1px 0 0 0;
+ border-color: #999;
+ font-size: 9px;
+ text-align: right;
+ clear: both;
+ color: #666;
+}
+
+a:link, a:visited {
+ text-decoration: none;
+ color: #666;
+}
+
+a:hover[href] {
+ text-decoration: underline;
+}
+
+
+/*
+ * Layout
+ */
+
+.gantt, .gantt-tasklist, .gantt-chart, .tasklist, .resourcelist {
+ float: left;
+}
+
+.gantt-tasklist, .gantt-chart, .tasklist-table, .resourcelist-table {
+ border-style: solid;
+ border-width: 1px;
+ border-color: #aaa;
+}
+
+.gantt-tasklist, .gantt-chart, .tasklist, .resourcelist {
+ overflow: auto;
+}
+
+.gantt, .tasklist, .resourcelist {
+  clear: both;
+  width: 100%;
+}
+
+.gantt-tasklist {
+ border-width: 1px 0px 1px 1px;
+ width: 30%;
+}
+
+.gantt-chart {
+ border-color: #aaa #aaa #aaa #fff;
+ width: 69.5%;
+}
+
+.tasklist, .resourcelist {
+ clear: left;
+}
+
+table {
+ width: 100%;
+ border-collapse: collapse;
+ border-style: none;
+ border-color: #fff;
+ white-space: nowrap;
+ margin: 0;
+}
+
+tr, td, th {
+ white-space: nowrap;
+ vertical-align: top;
+ padding-top: 1px;
+ padding-bottom: 1px;
+}
+
+th {
+ vertical-align: top;
+}
+
+tr {
+ height: 1.5em;
+}
+
+tr.header {
+ background-color: #aaa;
+ color: #fff;
+}
+
+tr.even {
+ background-color: #eee;
+}
+
+tr.odd {
+ background-color: #fff;
+}
+
+th span, td span {
+ margin-left: 6px;
+ margin-right: 6px;
+}
+
+th.note {
+ min-width: 20em;
+}
+
+td.note {
+ white-space: normal;
+}
+
+/*
+ * Gantt
+ */
+div.gantt-empty-begin, div.gantt-empty-end, div.gantt-complete-done, div.gantt-complete-notdone, div.gantt-summary {
+ overflow: hidden;
+ clear: none;
+ float: left; 
+ height: 0.75em;
+ margin-top: 0.15em;
+ margin-bottom: 0;
+}
+
+div.gantt-complete-done {
+ background-color: #495f6b;
+ height: 0.75em;
+ margin-top: 0;
+ margin-bottom: 0;
+}
+
+div.gantt-complete-notdone {
+ background-color: #8db6cd;
+ border-style: solid;
+ border-width: 1px;
+}
+
+div.gantt-summary {
+ height: 0.3em;
+ margin-top: 0.25em;
+ border-bottom: 2px dashed #000;
+}
+
+div.gantt-empty-end {
+ margin-left: 0;
+}
+
+div.gantt-milestone {
+ float: left;
+ font-size: 0.9em;
+ color: #000000;
+ position: relative;
+ margin-left: 0;
+ margin-right: 0;
+}
+
+div.gantt-resources {
+ float: left;
+ margin-left: 0.5em;
+ white-space: nowrap;
+}
+
+th.gantt-1day-header {
+  width: 19px;
+}
+
+th.gantt-2day-header {
+  width: 39px;
+}
+
+th.gantt-3day-header {
+  width: 59px;
+}
+
+th.gantt-4day-header {
+  width: 79px;
+}
+
+th.gantt-5day-header {
+  width: 99px;
+}
+
+th.gantt-6day-header {
+  width: 119px;
+}
+
+th.gantt-week-header, .gantt-resources {
+ width: 139px;
+}
+
+th.gantt-day-header {
+ margin: 0;
+ padding-top: 1px;
+ padding-bottom: 1px;
+ width: 19px;
+}
+
+</style>
+<!--[if IE]><style type="text/css">
+
+/* IE specific overrides to compensate for the different box model used by IE
+ * (see http://en.wikipedia.org/wiki/Internet_Explorer_box_model_bug)
+ */
+
+.gantt-resources {
+  overflow: hidden;
+}
+
+
+.tasklist, .resourcelist {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 1em;
+}
+
+
+.gantt-tasklist, .gantt-chart {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+
+.gantt-chart {
+  padding-bottom: 1px;
+}
+
+
+
+.tasklist-table, .resourcelist-table {
+  width: 99.8%;
+}
+
+/*
+div.gantt-empty-begin, div.gantt-empty-end, div.gantt-complete-done, div.gantt-complete-notdone, div.gantt-summary {
+ height: 1.75em;
+}
+
+div.gantt-complete-done {
+ height: 0.75em;
+}
+
+div.gantt-summary {
+ height: 0.3em;
+}
+*/
+th.gantt-1day-header {
+  width: 20px;
+}
+
+th.gantt-2day-header {
+  width: 40px;
+}
+
+th.gantt-3day-header {
+  width: 60px;
+}
+
+th.gantt-4day-header {
+  width: 80px;
+}
+
+th.gantt-5day-header {
+  width: 100px;
+}
+
+th.gantt-6day-header {
+  width: 120px;
+}
+
+th.gantt-week-header {
+ width: 140px;
+}
+
+th.gantt-day-header {
+ width: 20px;
+}
+
+</style><![endif]-->
+<!--[if gte IE 7]><style type="text/css">
+
+.gantt-chart {
+  padding-bottom: 0px;
+}
+
+</style><![endif]-->
+  </head>
+  <body>
+    <h1 class="proj-title">
+      <a name="project" id="project">Travaux pratiques Automne 2013</a>
+    </h1>
+    <table class="proj-header">
+      <tr>
+        <td class="header">Début:</td>
+        <td>September 9, 2013</td>
+      </tr>
+      <tr>
+        <td class="header">Fin:</td>
+        <td>December 16, 2013</td>
+      </tr>
+      <tr>
+      </tr>
+    </table>
+    <div class="separator"></div>
+    <div class="gantt">
+      <h2>
+        <a name="gantt" id="gantt">Diagramme des échéanciers</a>
+      </h2>
+      <div class="gantt-tasklist">
+        <table cellspacing="0" cellpadding="0" border="1">
+          <tr class="header" align="left">
+            <th>
+              <span>Tâche</span>
+            </th>
+            <th>
+              <span>Nom</span>
+            </th>
+            <th>
+              <span>Durée</span>
+            </th>
+          </tr>
+          <tr class="header">
+            <th> </th>
+            <th> </th>
+            <th> </th>
+          </tr>
+          <tr class="odd">
+            <td>
+              <span>1</span>
+            </td>
+            <td>
+              <a name="gantt-1" style="white-space: nowrap; margin-left: 0px;" id="gantt-1">
+                <span>PHASE 1</span>
+              </a>
+            </td>
+            <td>
+              <span></span>
+            </td>
+          </tr>
+          <tr class="even">
+            <td>
+              <span>2</span>
+            </td>
+            <td>
+              <a name="gantt-2" style="white-space: nowrap; margin-left: 0px;" id="gantt-2">
+                <span>Analyse 1</span>
+              </a>
+            </td>
+            <td>
+              <span>10d </span>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td>
+              <span>3</span>
+            </td>
+            <td>
+              <a name="gantt-3" style="white-space: nowrap; margin-left: 0px;" id="gantt-3">
+                <span>Test 1</span>
+              </a>
+            </td>
+            <td>
+              <span>7d </span>
+            </td>
+          </tr>
+          <tr class="even">
+            <td>
+              <span>4</span>
+            </td>
+            <td>
+              <a name="gantt-4" style="white-space: nowrap; margin-left: 0px;" id="gantt-4">
+                <span>Programmation 1</span>
+              </a>
+            </td>
+            <td>
+              <span>12d </span>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td>
+              <span>5</span>
+            </td>
+            <td>
+              <a name="gantt-5" style="white-space: nowrap; margin-left: 0px;" id="gantt-5">
+                <span>Assurance qualité 1</span>
+              </a>
+            </td>
+            <td>
+              <span>13d </span>
+            </td>
+          </tr>
+          <tr class="even">
+            <td>
+              <span>6</span>
+            </td>
+            <td>
+              <a name="gantt-6" style="white-space: nowrap; margin-left: 0px;" id="gantt-6">
+                <span>PHASE 2</span>
+              </a>
+            </td>
+            <td>
+              <span></span>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td>
+              <span>7</span>
+            </td>
+            <td>
+              <a name="gantt-7" style="white-space: nowrap; margin-left: 0px;" id="gantt-7">
+                <span>Analyse 2</span>
+              </a>
+            </td>
+            <td>
+              <span>15d </span>
+            </td>
+          </tr>
+          <tr class="even">
+            <td>
+              <span>8</span>
+            </td>
+            <td>
+              <a name="gantt-8" style="white-space: nowrap; margin-left: 0px;" id="gantt-8">
+                <span>Test 2</span>
+              </a>
+            </td>
+            <td>
+              <span>7d </span>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td>
+              <span>9</span>
+            </td>
+            <td>
+              <a name="gantt-9" style="white-space: nowrap; margin-left: 0px;" id="gantt-9">
+                <span>Programmation 2</span>
+              </a>
+            </td>
+            <td>
+              <span>12d </span>
+            </td>
+          </tr>
+          <tr class="even">
+            <td>
+              <span>10</span>
+            </td>
+            <td>
+              <a name="gantt-10" style="white-space: nowrap; margin-left: 0px;" id="gantt-10">
+                <span>Assurance qualité 2</span>
+              </a>
+            </td>
+            <td>
+              <span>13d </span>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td>
+              <span>11</span>
+            </td>
+            <td>
+              <a name="gantt-11" style="white-space: nowrap; margin-left: 0px;" id="gantt-11">
+                <span>PHASE 3</span>
+              </a>
+            </td>
+            <td>
+              <span></span>
+            </td>
+          </tr>
+          <tr class="even">
+            <td>
+              <span>12</span>
+            </td>
+            <td>
+              <a name="gantt-12" style="white-space: nowrap; margin-left: 0px;" id="gantt-12">
+                <span>Analyse 3</span>
+              </a>
+            </td>
+            <td>
+              <span>10d </span>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td>
+              <span>13</span>
+            </td>
+            <td>
+              <a name="gantt-13" style="white-space: nowrap; margin-left: 0px;" id="gantt-13">
+                <span>Test 3</span>
+              </a>
+            </td>
+            <td>
+              <span>7d </span>
+            </td>
+          </tr>
+          <tr class="even">
+            <td>
+              <span>14</span>
+            </td>
+            <td>
+              <a name="gantt-14" style="white-space: nowrap; margin-left: 0px;" id="gantt-14">
+                <span>Programmation 3</span>
+              </a>
+            </td>
+            <td>
+              <span>12d </span>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td>
+              <span>15</span>
+            </td>
+            <td>
+              <a name="gantt-15" style="white-space: nowrap; margin-left: 0px;" id="gantt-15">
+                <span>Assurance qualité 3</span>
+              </a>
+            </td>
+            <td>
+              <span>13d </span>
+            </td>
+          </tr>
+          <tr class="even">
+            <td>
+              <span>16</span>
+            </td>
+            <td>
+              <a name="gantt-16" style="white-space: nowrap; margin-left: 0px;" id="gantt-16">
+                <span>PHASE 4</span>
+              </a>
+            </td>
+            <td>
+              <span></span>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td>
+              <span>17</span>
+            </td>
+            <td>
+              <a name="gantt-17" style="white-space: nowrap; margin-left: 0px;" id="gantt-17">
+                <span>Analyse 4</span>
+              </a>
+            </td>
+            <td>
+              <span>10d </span>
+            </td>
+          </tr>
+          <tr class="even">
+            <td>
+              <span>18</span>
+            </td>
+            <td>
+              <a name="gantt-18" style="white-space: nowrap; margin-left: 0px;" id="gantt-18">
+                <span>Test  4</span>
+              </a>
+            </td>
+            <td>
+              <span>7d </span>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td>
+              <span>19</span>
+            </td>
+            <td>
+              <a name="gantt-19" style="white-space: nowrap; margin-left: 0px;" id="gantt-19">
+                <span>Programmation 4</span>
+              </a>
+            </td>
+            <td>
+              <span>12d </span>
+            </td>
+          </tr>
+          <tr class="even">
+            <td>
+              <span>20</span>
+            </td>
+            <td>
+              <a name="gantt-20" style="white-space: nowrap; margin-left: 0px;" id="gantt-20">
+                <span>Assurance qualité 4</span>
+              </a>
+            </td>
+            <td>
+              <span>13d </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="gantt-chart">
+        <table cellspacing="0" cellpadding="0" border="1" style="table-layout: fixed;">
+          <tr class="header" align="left">
+            <th class="gantt-6day-header" colspan="6">Semaine 3</th>
+            <th class="gantt-week-header" align="center" colspan="7">Semaine 4</th>
+            <th class="gantt-week-header" align="center" colspan="7">Semaine 5</th>
+            <th class="gantt-week-header" align="center" colspan="7">Semaine 6</th>
+            <th class="gantt-week-header" align="center" colspan="7">Semaine 7</th>
+            <th class="gantt-week-header" align="center" colspan="7">Semaine 7</th>
+            <th class="gantt-week-header" align="center" colspan="7">Semaine 8</th>
+            <th class="gantt-week-header" align="center" colspan="7">Semaine 9</th>
+            <th class="gantt-week-header" align="center" colspan="7">Semaine 10</th>
+            <th class="gantt-week-header" align="center" colspan="7">Semaine 11</th>
+            <th class="gantt-week-header" align="center" colspan="7">Semaine 12</th>
+            <th class="gantt-week-header" align="center" colspan="7">Semaine 13</th>
+            <th class="gantt-week-header" align="center" colspan="7">Semaine 14</th>
+            <th class="gantt-week-header" align="center" colspan="7">Semaine 15</th>
+            <th class="gantt-week-header" align="center" colspan="7">Semaine 16</th>
+            <th class="gantt-1day-header" colspan="1"></th>
+            <th></th>
+          </tr>
+          <tr class="header" align="left">
+            <th class="gantt-day-header" align="center">10</th>
+            <th class="gantt-day-header" align="center">11</th>
+            <th class="gantt-day-header" align="center">12</th>
+            <th class="gantt-day-header" align="center">13</th>
+            <th class="gantt-day-header" align="center">14</th>
+            <th class="gantt-day-header" align="center">15</th>
+            <th class="gantt-day-header" align="center">16</th>
+            <th class="gantt-day-header" align="center">17</th>
+            <th class="gantt-day-header" align="center">18</th>
+            <th class="gantt-day-header" align="center">19</th>
+            <th class="gantt-day-header" align="center">20</th>
+            <th class="gantt-day-header" align="center">21</th>
+            <th class="gantt-day-header" align="center">22</th>
+            <th class="gantt-day-header" align="center">23</th>
+            <th class="gantt-day-header" align="center">24</th>
+            <th class="gantt-day-header" align="center">25</th>
+            <th class="gantt-day-header" align="center">26</th>
+            <th class="gantt-day-header" align="center">27</th>
+            <th class="gantt-day-header" align="center">28</th>
+            <th class="gantt-day-header" align="center">29</th>
+            <th class="gantt-day-header" align="center">30</th>
+            <th class="gantt-day-header" align="center">1</th>
+            <th class="gantt-day-header" align="center">2</th>
+            <th class="gantt-day-header" align="center">3</th>
+            <th class="gantt-day-header" align="center">4</th>
+            <th class="gantt-day-header" align="center">5</th>
+            <th class="gantt-day-header" align="center">6</th>
+            <th class="gantt-day-header" align="center">7</th>
+            <th class="gantt-day-header" align="center">8</th>
+            <th class="gantt-day-header" align="center">9</th>
+            <th class="gantt-day-header" align="center">10</th>
+            <th class="gantt-day-header" align="center">11</th>
+            <th class="gantt-day-header" align="center">12</th>
+            <th class="gantt-day-header" align="center">13</th>
+            <th class="gantt-day-header" align="center">14</th>
+            <th class="gantt-day-header" align="center">15</th>
+            <th class="gantt-day-header" align="center">16</th>
+            <th class="gantt-day-header" align="center">17</th>
+            <th class="gantt-day-header" align="center">18</th>
+            <th class="gantt-day-header" align="center">19</th>
+            <th class="gantt-day-header" align="center">20</th>
+            <th class="gantt-day-header" align="center">21</th>
+            <th class="gantt-day-header" align="center">22</th>
+            <th class="gantt-day-header" align="center">23</th>
+            <th class="gantt-day-header" align="center">24</th>
+            <th class="gantt-day-header" align="center">25</th>
+            <th class="gantt-day-header" align="center">26</th>
+            <th class="gantt-day-header" align="center">27</th>
+            <th class="gantt-day-header" align="center">28</th>
+            <th class="gantt-day-header" align="center">29</th>
+            <th class="gantt-day-header" align="center">30</th>
+            <th class="gantt-day-header" align="center">31</th>
+            <th class="gantt-day-header" align="center">1</th>
+            <th class="gantt-day-header" align="center">2</th>
+            <th class="gantt-day-header" align="center">3</th>
+            <th class="gantt-day-header" align="center">4</th>
+            <th class="gantt-day-header" align="center">5</th>
+            <th class="gantt-day-header" align="center">6</th>
+            <th class="gantt-day-header" align="center">7</th>
+            <th class="gantt-day-header" align="center">8</th>
+            <th class="gantt-day-header" align="center">9</th>
+            <th class="gantt-day-header" align="center">10</th>
+            <th class="gantt-day-header" align="center">11</th>
+            <th class="gantt-day-header" align="center">12</th>
+            <th class="gantt-day-header" align="center">13</th>
+            <th class="gantt-day-header" align="center">14</th>
+            <th class="gantt-day-header" align="center">15</th>
+            <th class="gantt-day-header" align="center">16</th>
+            <th class="gantt-day-header" align="center">17</th>
+            <th class="gantt-day-header" align="center">18</th>
+            <th class="gantt-day-header" align="center">19</th>
+            <th class="gantt-day-header" align="center">20</th>
+            <th class="gantt-day-header" align="center">21</th>
+            <th class="gantt-day-header" align="center">22</th>
+            <th class="gantt-day-header" align="center">23</th>
+            <th class="gantt-day-header" align="center">24</th>
+            <th class="gantt-day-header" align="center">25</th>
+            <th class="gantt-day-header" align="center">26</th>
+            <th class="gantt-day-header" align="center">27</th>
+            <th class="gantt-day-header" align="center">28</th>
+            <th class="gantt-day-header" align="center">29</th>
+            <th class="gantt-day-header" align="center">30</th>
+            <th class="gantt-day-header" align="center">1</th>
+            <th class="gantt-day-header" align="center">2</th>
+            <th class="gantt-day-header" align="center">3</th>
+            <th class="gantt-day-header" align="center">4</th>
+            <th class="gantt-day-header" align="center">5</th>
+            <th class="gantt-day-header" align="center">6</th>
+            <th class="gantt-day-header" align="center">7</th>
+            <th class="gantt-day-header" align="center">8</th>
+            <th class="gantt-day-header" align="center">9</th>
+            <th class="gantt-day-header" align="center">10</th>
+            <th class="gantt-day-header" align="center">11</th>
+            <th class="gantt-day-header" align="center">12</th>
+            <th class="gantt-day-header" align="center">13</th>
+            <th class="gantt-day-header" align="center">14</th>
+            <th class="gantt-day-header" align="center">15</th>
+            <th class="gantt-day-header" align="center">16</th>
+            <th class="gantt-day-header" align="center">17</th>
+            <th class="gantt-day-header" align="center">18</th>
+            <th class="gantt-day-header" align="center">19</th>
+            <th class="gantt-day-header" align="center">20</th>
+            <th class="gantt-day-header" align="center">21</th>
+            <th class="gantt-day-header" align="center">22</th>
+            <th class="gantt-day-header" align="center">23</th>
+            <th align="center"></th>
+          </tr>
+          <tr class="odd">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 2px;"></div>
+                <div class="gantt-milestone">◆</div>
+                <div class="gantt-resources"></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="even">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 6px;"></div>
+                <div class="gantt-complete-notdone" style="width: 268px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 1 et 5</div>
+              </div>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 206px;"></div>
+                <div class="gantt-complete-notdone" style="width: 208px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 2 et 6</div>
+              </div>
+            </td>
+          </tr>
+          <tr class="even">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 206px;"></div>
+                <div class="gantt-complete-notdone" style="width: 348px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 3 et 7</div>
+              </div>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 186px;"></div>
+                <div class="gantt-complete-notdone" style="width: 368px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 4 et 8</div>
+              </div>
+            </td>
+          </tr>
+          <tr class="even">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 422px;"></div>
+                <div class="gantt-milestone">◆</div>
+                <div class="gantt-resources"></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 426px;"></div>
+                <div class="gantt-complete-notdone" style="width: 408px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 2 et 6</div>
+              </div>
+            </td>
+          </tr>
+          <tr class="even">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 766px;"></div>
+                <div class="gantt-complete-notdone" style="width: 208px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 4 et 8</div>
+              </div>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 766px;"></div>
+                <div class="gantt-complete-notdone" style="width: 348px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 1 et 5</div>
+              </div>
+            </td>
+          </tr>
+          <tr class="even">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 746px;"></div>
+                <div class="gantt-complete-notdone" style="width: 368px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 3 et 7</div>
+              </div>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 982px;"></div>
+                <div class="gantt-milestone">◆</div>
+                <div class="gantt-resources"></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="even">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 986px;"></div>
+                <div class="gantt-complete-notdone" style="width: 268px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 4 et 8</div>
+              </div>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 1186px;"></div>
+                <div class="gantt-complete-notdone" style="width: 208px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 3 et 7</div>
+              </div>
+            </td>
+          </tr>
+          <tr class="even">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 1186px;"></div>
+                <div class="gantt-complete-notdone" style="width: 348px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 2 et 6</div>
+              </div>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 1166px;"></div>
+                <div class="gantt-complete-notdone" style="width: 368px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 1 et 5</div>
+              </div>
+            </td>
+          </tr>
+          <tr class="even">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 1402px;"></div>
+                <div class="gantt-milestone">◆</div>
+                <div class="gantt-resources"></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 1406px;"></div>
+                <div class="gantt-complete-notdone" style="width: 268px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 3 et 7</div>
+              </div>
+            </td>
+          </tr>
+          <tr class="even">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 1606px;"></div>
+                <div class="gantt-complete-notdone" style="width: 208px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 1 et 5</div>
+              </div>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 1606px;"></div>
+                <div class="gantt-complete-notdone" style="width: 348px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 4 et 8</div>
+              </div>
+            </td>
+          </tr>
+          <tr class="even">
+            <td colspan="106">
+              <div style="width: 2101px; white-space: nowrap;">
+                <div class="gantt-empty-begin" style="width: 1586px;"></div>
+                <div class="gantt-complete-notdone" style="width: 368px;"></div>
+                <div class="gantt-empty-end"></div>
+                <div class="gantt-resources">Équipes 2 et 6</div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="separator"></div>
+    <div class="tasklist">
+      <h2>
+        <a name="tasks" id="tasks">Tâche</a>
+      </h2>
+      <div class="tasklist-table">
+        <table cellspacing="0" cellpadding="0" border="1">
+          <tr class="header" align="left">
+            <th>
+              <span>Tâche</span>
+            </th>
+            <th>
+              <span>Nom</span>
+            </th>
+            <th>
+              <span>Début</span>
+            </th>
+            <th>
+              <span>Présentation</span>
+            </th>
+            <th>
+              <span>Fin</span>
+            </th>
+            <th>
+              <span>Durée</span>
+            </th>
+            <th>
+              <span>Attribuée à</span>
+            </th>
+          </tr>
+          <tr class="odd" style="">
+            <td>
+              <span>1</span>
+            </td>
+            <td>
+              <a name="task1" style="margin-left: 0px" id="task1">
+                <span>PHASE 1</span>
+              </a>
+            </td>
+            <td>
+              <span></span>
+            </td>
+            <td>
+              <span></span>
+            </td>
+            <td></td>
+            <td>
+              <span></span>
+            </td>
+            <td></td>
+          </tr>
+          <tr class="even" style="">
+            <td>
+              <span>2</span>
+            </td>
+            <td>
+              <a name="task2" style="margin-left: 0px" id="task2">
+                <span>Analyse 1</span>
+              </a>
+            </td>
+            <td>
+              <span>Sep 10</span>
+            </td>
+            <td>
+              <span>Sep 20
+              </span>
+            </td>
+            <td>
+              <span>Sep 23</span>
+            </td>
+            <td>
+              <span>10d </span>
+            </td>
+            <td>Équipes 1 et 5</td>
+          </tr>
+          <tr class="odd" style="">
+            <td>
+              <span>3</span>
+            </td>
+            <td>
+              <a name="task3" style="margin-left: 0px" id="task3">
+                <span>Test 1</span>
+              </a>
+            </td>
+            <td>
+              <span>Sep 20</span>
+            </td>
+            <td>
+              <span>Sep 27
+              </span>
+            </td>
+            <td>
+              <span>Sep 30</span>
+            </td>
+            <td>
+              <span>7d </span>
+            </td>
+            <td>Équipes 2 et 6</td>
+          </tr>
+          <tr class="even" style="">
+            <td>
+              <span>4</span>
+            </td>
+            <td>
+              <a name="task4" style="margin-left: 0px" id="task4">
+                <span>Programmation 1</span>
+              </a>
+            </td>
+            <td>
+              <span>Sep 20</span>
+            </td>
+            <td>
+              <span>Oct 4
+              </span>
+            </td>
+            <td>
+              <span>Oct 7</span>
+            </td>
+            <td>
+              <span>12d </span>
+            </td>
+            <td>Équipes 3 et 7</td>
+          </tr>
+          <tr class="odd" style="">
+            <td>
+              <span>5</span>
+            </td>
+            <td>
+              <a name="task5" style="margin-left: 0px" id="task5">
+                <span>Assurance qualité 1</span>
+              </a>
+            </td>
+            <td>
+              <span>Sep 19</span>
+            </td>
+            <td>
+              <span>
+              </span>
+            </td>
+            <td>
+              <span>Oct 7</span>
+            </td>
+            <td>
+              <span>13d </span>
+            </td>
+            <td>Équipes 4 et 8</td>
+          </tr>
+          <tr class="even" style="">
+            <td>
+              <span>6</span>
+            </td>
+            <td>
+              <a name="task6" style="margin-left: 0px" id="task6">
+                <span>PHASE 2</span>
+              </a>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+              <span></span>
+            </td>
+            <td></td>
+          </tr>
+          <tr class="odd" style="">
+            <td>
+              <span>7</span>
+            </td>
+            <td>
+              <a name="task7" style="margin-left: 0px" id="task7">
+                <span>Analyse 2</span>
+              </a>
+            </td>
+            <td>
+              <span>Oct 1</span>
+            </td>
+            <td>
+              <span>Oct 18
+              </span>
+            </td>
+            <td>
+              <span>Oct 21</span>
+            </td>
+            <td>
+              <span>15d </span>
+            </td>
+            <td>Équipes 2 et 6</td>
+          </tr>
+          <tr class="even" style="">
+            <td>
+              <span>8</span>
+            </td>
+            <td>
+              <a name="task8" style="margin-left: 0px" id="task8">
+                <span>Test 2</span>
+              </a>
+            </td>
+            <td>
+              <span>Oct 18</span>
+            </td>
+            <td>
+              <span>Oct 25
+              </span>
+            </td>
+            <td>
+              <span>Oct 28</span>
+            </td>
+            <td>
+              <span>7d </span>
+            </td>
+            <td>Équipes 4 et 8</td>
+          </tr>
+          <tr class="odd" style="">
+            <td>
+              <span>9</span>
+            </td>
+            <td>
+              <a name="task9" style="margin-left: 0px" id="task9">
+                <span>Programmation 2</span>
+              </a>
+            </td>
+            <td>
+              <span>Oct 18</span>
+            </td>
+            <td>
+              <span>Nov 1
+              </span>
+            </td>
+            <td>
+              <span>Nov 4</span>
+            </td>
+            <td>
+              <span>12d </span>
+            </td>
+            <td>Équipes 1 et 5</td>
+          </tr>
+          <tr class="even" style="">
+            <td>
+              <span>10</span>
+            </td>
+            <td>
+              <a name="task10" style="margin-left: 0px" id="task10">
+                <span>Assurance qualité 2</span>
+              </a>
+            </td>
+            <td>
+              <span>Oct 17</span>
+            </td>
+            <td>
+              <span>
+              </span>
+            </td>
+            <td>
+              <span>Nov 4</span>
+            </td>
+            <td>
+              <span>13d </span>
+            </td>
+            <td>Équipes 3 et 7</td>
+          </tr>
+          <tr class="odd" style="">
+            <td>
+              <span>11</span>
+            </td>
+            <td>
+              <a name="task11" style="margin-left: 0px" id="task11">
+                <span>PHASE 3</span>
+              </a>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+              <span></span>
+            </td>
+            <td></td>
+          </tr>
+          <tr class="even" style="">
+            <td>
+              <span>12</span>
+            </td>
+            <td>
+              <a name="task12" style="margin-left: 0px" id="task12">
+                <span>Analyse 3</span>
+              </a>
+            </td>
+            <td>
+              <span>Oct 29</span>
+            </td>
+            <td>
+              <span>Nov 8
+              </span>
+            </td>
+            <td>
+              <span>Nov 11</span>
+            </td>
+            <td>
+              <span>10d </span>
+            </td>
+            <td>Équipes 4 et 8</td>
+          </tr>
+          <tr class="odd" style="">
+            <td>
+              <span>13</span>
+            </td>
+            <td>
+              <a name="task13" style="margin-left: 0px" id="task13">
+                <span>Test 3</span>
+              </a>
+            </td>
+            <td>
+              <span>Nov 8</span>
+            </td>
+            <td>
+              <span>Nov 15
+              </span>
+            </td>
+            <td>
+              <span>Nov 18</span>
+            </td>
+            <td>
+              <span>7d </span>
+            </td>
+            <td>Équipes 3 et 7</td>
+          </tr>
+          <tr class="even" style="">
+            <td>
+              <span>14</span>
+            </td>
+            <td>
+              <a name="task14" style="margin-left: 0px" id="task14">
+                <span>Programmation 3</span>
+              </a>
+            </td>
+            <td>
+              <span>Nov 8</span>
+            </td>
+            <td>
+              <span>Nov 22
+              </span>
+            </td>
+            <td>
+              <span>Nov 25</span>
+            </td>
+            <td>
+              <span>12d </span>
+            </td>
+            <td>Équipes 2 et 6</td>
+          </tr>
+          <tr class="odd" style="">
+            <td>
+              <span>15</span>
+            </td>
+            <td>
+              <a name="task15" style="margin-left: 0px" id="task15">
+                <span>Assurance qualité 3</span>
+              </a>
+            </td>
+            <td>
+              <span>Nov 7</span>
+            </td>
+            <td>
+              <span>
+              </span>
+            </td>
+            <td>
+              <span>Nov 25</span>
+            </td>
+            <td>
+              <span>13d </span>
+            </td>
+            <td>Équipes 1 et 5</td>
+          </tr>
+          <tr class="even" style="">
+            <td>
+              <span>16</span>
+            </td>
+            <td>
+              <a name="task16" style="margin-left: 0px" id="task16">
+                <span>PHASE 4</span>
+              </a>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+              <span></span>
+            </td>
+            <td></td>
+          </tr>
+          <tr class="odd" style="">
+            <td>
+              <span>17</span>
+            </td>
+            <td>
+              <a name="task17" style="margin-left: 0px" id="task17">
+                <span>Analyse 4</span>
+              </a>
+            </td>
+            <td>
+              <span>Nov 19</span>
+            </td>
+            <td>
+              <span>Nov 29
+              </span>
+            </td>
+            <td>
+              <span>Dec 2</span>
+            </td>
+            <td>
+              <span>10d </span>
+            </td>
+            <td>Équipes 3 et 7</td>
+          </tr>
+          <tr class="even" style="">
+            <td>
+              <span>18</span>
+            </td>
+            <td>
+              <a name="task18" style="margin-left: 0px" id="task18">
+                <span>Test  4</span>
+              </a>
+            </td>
+            <td>
+              <span>Nov 29</span>
+            </td>
+            <td>
+              <span>Dec 6
+              </span>
+            </td>
+            <td>
+              <span>Dec 9</span>
+            </td>
+            <td>
+              <span>7d </span>
+            </td>
+            <td>Équipes 1 et 5</td>
+          </tr>
+          <tr class="odd" style="">
+            <td>
+              <span>19</span>
+            </td>
+            <td>
+              <a name="task19" style="margin-left: 0px" id="task19">
+                <span>Programmation 4</span>
+              </a>
+            </td>
+            <td>
+              <span>Nov 29</span>
+            </td>
+            <td>
+              <span>Dec 13
+              </span>
+            </td>
+            <td>
+              <span>Dec 16</span>
+            </td>
+            <td>
+              <span>12d </span>
+            </td>
+            <td>Équipes 4 et 8</td>
+          </tr>
+          <tr class="even" style="">
+            <td>
+              <span>20</span>
+            </td>
+            <td>
+              <a name="task20" style="margin-left: 0px" id="task20">
+                <span>Assurance qualité 4</span>
+              </a>
+            </td>
+            <td>
+              <span>Nov 28</span>
+            </td>
+            <td>
+              <span>
+              </span>
+            </td>
+            <td>
+              <span>Dec 16</span>
+            </td>
+            <td>
+              <span>13d </span>
+            </td>
+            <td>Équipes 2 et 6</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="separator"></div>
+    <div class="resourcelist">
+      <h2>
+        <a name="resources" id="resources">Resources</a>
+      </h2>
+      <div class="resourcelist-table">
+        <table cellspacing="0" cellpadding="0" border="1" width="100%">
+          <tr class="header" align="left">
+            <th>
+              <span>Équipe</span>
+            </th>
+            <th>
+              <span></span>
+            </th>
+            <th>
+              <span></span>
+            </th>
+            <th>
+              <span></span>
+            </th>
+            <th>
+              <span></span>
+            </th>
+            <th>
+              <span></span>
+            </th>
+          </tr>
+          <tr class="odd">
+            <td>
+              <a name="res-1" id="res-1">
+                <span>Équipe 1</span>
+              </a>
+            </td>
+            <td>
+              <span>Arvisais, Gabriel</span>
+            </td>
+            <td>
+              <span>Echeverry, Cesar Arturo
+</span>
+            </td>
+            <td>
+              <span>Lemire, Louis-Etienne
+</span>
+            </td>
+            <td>
+              <a href="mailto:">
+                <span></span>
+              </a>
+            </td>
+            <td align="right">
+              <span></span>
+            </td>
+          </tr>
+          <tr class="even">
+            <td>
+              <a name="res-2" id="res-2">
+                <span>Équipe 2</span>
+              </a>
+            </td>
+            <td>
+              <span>Blier, Nicolas
+</span>
+            </td>
+            <td>
+              <span>Goudreau, Charles
+</span>
+            </td>
+            <td>
+              <span>Ndiaye, Senghane
+</span>
+            </td>
+            <td>
+              <a href="mailto:">
+                <span></span>
+              </a>
+            </td>
+            <td align="right">
+              <span></span>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td>
+              <a name="res-3" id="res-3">
+                <span>Équipe 3</span>
+              </a>
+            </td>
+            <td>
+              <span>Bouyahmed, Yacine
+</span>
+            </td>
+            <td>
+              <span>Janelle, Frédéric
+</span>
+            </td>
+            <td>
+              <span>Pineault, Julien
+</span>
+            </td>
+            <td>
+              <a href="mailto:">
+                <span></span>
+              </a>
+            </td>
+            <td align="right">
+              <span></span>
+            </td>
+          </tr>
+          <tr class="even">
+            <td>
+              <a name="res-4" id="res-4">
+                <span>Équipe 4</span>
+              </a>
+            </td>
+            <td>
+              <span>Brunet, Mario
+</span>
+            </td>
+            <td>
+              <span>Joseph, Mathiado
+</span>
+            </td>
+            <td>
+              <span>Plamondon, Michel
+</span>
+            </td>
+            <td>
+              <a href="mailto:">
+                <span></span>
+              </a>
+            </td>
+            <td align="right">
+              <span></span>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td>
+              <a name="res-1" id="res-1">
+                <span>Équipe 5</span>
+              </a>
+            </td>
+            <td>
+              <span>Caumartin, Alex
+</span>
+            </td>
+            <td>
+              <span>Ladouceur, Kismony
+</span>
+            </td>
+            <td>
+              <span>Robichaud, Pierre
+</span>
+            </td>
+            <td>
+              <a href="mailto:">
+                <span></span>
+              </a>
+            </td>
+            <td align="right">
+              <span></span>
+            </td>
+          </tr>
+          <tr class="even">
+            <td>
+              <a name="res-2" id="res-2">
+                <span>Équipe 6</span>
+              </a>
+            </td>
+            <td>
+              <span>Côté, Olivier
+</span>
+            </td>
+            <td>
+              <span>Lafortune, Vincent Luc
+</span>
+            </td>
+            <td>
+              <span>Rosario-Jiménez, Luis-Alberto
+</span>
+            </td>
+            <td>
+              <a href="mailto:">
+                <span></span>
+              </a>
+            </td>
+            <td align="right">
+              <span></span>
+            </td>
+          </tr>
+          <tr class="odd">
+            <td>
+              <a name="res-3" id="res-3">
+                <span>Équipe 7</span>
+              </a>
+            </td>
+            <td>
+              <span>Deblois-Richer, Christophe
+</span>
+            </td>
+            <td>
+              <span>Lajeunesse, Dominique
+</span>
+            </td>
+            <td>
+              <span>Taziev, Bari
+</span>
+            </td>
+            <td>
+              <a href="mailto:">
+                <span></span>
+              </a>
+            </td>
+            <td align="right">
+              <span></span>
+            </td>
+          </tr>
+          <tr class="even">
+            <td>
+              <a name="res-4" id="res-4">
+                <span>Équipe 8</span>
+              </a>
+            </td>
+            <td>
+              <span>Dumais, Marc-Antoine
+</span>
+            </td>
+            <td>
+              <span>Lefevre, Maxime
+</span>
+            </td>
+            <td>
+              <span>Viau-Chauny, Thierry
+</span>
+            </td>
+            <td>
+              <a href="mailto:">
+                <span></span>
+              </a>
+            </td>
+            <td align="right">
+              <span></span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="footer">
+      <div>This file was generated by 
+      <a href="http://live.gnome.org/Planner/" style="text-decoration: underline;">Planner</a></div>
+    </div>
+  </body>
+</html>

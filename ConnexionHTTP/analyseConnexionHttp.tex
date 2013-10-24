@@ -1,0 +1,179 @@
+\documentclass[12pt,pdftex,oneside]{uqam_these}
+\include{mes_macros}
+\include{graphicx}
+
+\begin{document}
+
+La classe Connexion :
+
+\begin{enumerate}
+
+\item Description :  La classe ConnexionHttp permet de faciliter l'établissement
+d'une connexion HTTP côté serveur. La ConnexionHttp permet d'ouvrir une
+connexion TCP sur un port en particulier et d'attendre les requête qui y seront dirigées.
+Les requêtes HTTP reçue d'un client sont ensuite encapsulées dans un objet
+Requete. De la même façon, pour renvoyer une réponse à un client, il suffit
+d'encapsuler la réponse HTTP dans un objet Reponse et la ConnexionHttp se
+chargera de l'acheminer.
+
+\includegraphics[width=\textwidth]{schema_connexion.jpeg}
+
+\item Utilisation : 
+
+Deux constructeurs distincts permettent de créer un objet Connexion
+associé à un port donné. Si une adresse distante est spécifiée, le
+nouvel objet tentera automatiquement d'établir la connexion. Sinon, il
+attendra de recevoir une requête d'un client.
+
+Utilisation du contructeur à un paramètre : 
+\begin{verbatim}
+
+maConnexion := Connexion.create( 80 );
+
+\end{verbatim}
+
+Utilisation du contructeur à deux paramètres : 
+
+\begin{verbatim}
+
+maConnexion := Connexion.create( '192.168.2.100', 80 );
+
+\end{verbatim}
+
+Si la Connexion a été créée avec une adresse, on peut tout de suite
+considérer que le lien est établi et commencer à envoyer des
+messages. Si elle a été créée sans adresse, on peut tout de suite
+commencer à lire des messages. L'opération de lecture bloquera tant
+qu'un client ne se sera pas connecté et n'aura pas envoyé un message.
+
+Les opérations de lecture et d'écriture s'effectuent exactement comme
+la lecture au clavier et l'affichage à l'écran par readln et writeln,
+c'est-à-dire par le passage par référence d'une variable «~réceptrice~».
+
+\begin{verbatim}
+
+var
+  chaineLue : String;
+  chaineEnvoyee : String;
+begin
+  maConnexion.lireChaine( chaineLue );
+
+  chaineEnvoyee := 'Bonjour le monde';
+  maConnexion.ecrireChaine( chaineEnvoyee );
+end;
+
+\end{verbatim}
+
+Tant que la connexion n'est pas fermée par le client ou le serveur,
+les opérations de lecture et d'écriture se font toutes de et vers le
+même hôte distant.
+
+On peut forcer la fermeture d'une connexion grâce à la méthode
+fermerConnexion. Si l'objet a été crée comme connexion serveur, il est
+alors possible d'attendre la connexion d'un nouveau client en faisant
+une nouvelle opération de lecture bloquante. Si l'objet a été créé
+comme connexion client, une nouvelle tentative de connexion sera
+effectuée à la première opération d'écriture.
+
+
+\item Attributs :
+  \begin{enumerate}
+    
+  \item port : Integer
+        Le port sur lequel la connexion serveur attend les connexions client
+        ou port sur lequel tenter d'établir une connexion à un serveur
+        distant.
+
+  \item adresse : String 
+        Adresse du serveur distant avec lequel établir la connexion.
+  \end{enumerate}
+
+\item Constructeurs
+  \begin{enumerate}
+  \item create( uneAdresse : String; unPort : Integer );
+        Crée un objet Connexion client qui se connectera sur le serveur spécifié par l'adresse et le port
+        Le port doit être une valeur valide (0 < unPort < 65536) sinon une
+        exception est lancée avec le message «~Port invalide~».
+        \begin{enumerate}
+        \item Paramètres
+          \begin{enumerate}
+          \item uneAdresse
+                L'adresse du serveur distant
+          \item unPort
+                Le port sur lequel se connecter sur le serveur
+          \end{enumerate}
+        \end{enumerate}
+
+  \item create( unPort : Integer );
+        Crée un objet Connexion serveur qui écoutera sur le port spécifié
+        Le port doit être une valeur valide (0 < unPort < 65536) sinon une
+        exception est lancée avec le message «~Port invalide~».
+        \begin{enumerate}
+        \item Paramètres
+          \begin{enumerate}
+          \item unPort
+                Le port sur lequel se connecter sur le serveur
+          \end{enumerate}
+        \end{enumerate}
+  \end{enumerate}
+
+\item Destructeur : 
+Destructeur par défaut. Ferme toutes les connexions existantes.
+
+\item Méthodes : 
+
+  \begin{enumerate}
+  \item lireChaine (var uneChaine : String );
+        Lit une chaîne de caractère de l'ordinateur distant
+        \begin{enumerate}
+        \item Paramètres
+          \begin{enumerate}
+          \item uneChaine
+                La variable qui contiendra la chaîne reçue
+          \end{enumerate}
+        \item Fonctionnement
+          \begin{itemize}
+          \item Si la connexion client n'existe pas, établie une connexion
+          serveur en écoutant sur le port \emph{port}. Bloque jusqu'à
+          ce qu'un client soit connecté.
+
+          \item Lit des données du connecteur jusqu'à ce qu'une ligne
+            complète soit reçue (terminée par CRLF).
+
+          \item Si plus d'une ligne est reçue, affecte la
+            première ligne à \emph{uneChaine} et conserve le restant pour le prochain appel.
+          \end{itemize}
+
+        \end{enumerate}
+
+  \item ecrireChaine ( uneChaine:String );
+        Envoie une chaîne de caractère à l'ordinateur distant
+        \begin{enumerate}
+        \item Paramètres
+          \begin{enumerate}
+          \item uneChaine
+                La chaîne à envoyer. Elle doit se terminer par un retour de chariot (caractères 13 et 10)
+          \end{enumerate}
+        \item Fonctionnement
+          \begin{itemize}
+            \item Si la connexion client n'existe pas vérifie
+              l'\emph{adresse}
+            \item Si l'\emph{adresse} est vide, termine. Sinon, crée
+              la connexion client selon \emph{adresse} et \emph{port}
+            \item Envoie la chaîne \emph{uneChaîne}
+          \end{itemize}
+        \end{enumerate}
+
+  \item fermerConnexion;
+        Ferme la connexion.
+        \item Fonctionnement
+          \begin{itemize}
+            \item Si la connexion client n'existe pas ou n'est pas
+              établie, termine.
+            \item Déconnecte la connexion client.
+            \item Détruit l'objet connexion client.
+          \end{itemize}
+  \end{enumerate}
+\end{enumerate}
+\end{document}
+

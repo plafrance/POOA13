@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<project name="Travaux pratiques Automne 2013" company="" manager="" phase="" project-start="20130910T000000Z" mrproject-version="2" calendar="1">
+  <properties/>
+  <phases/>
+  <calendars>
+    <day-types>
+      <day-type id="0" name="Working" description="A default working day"/>
+      <day-type id="1" name="Nonworking" description="A default non working day"/>
+      <day-type id="2" name="Use base" description="Use day from base calendar"/>
+    </day-types>
+    <calendar id="1" name="Default">
+      <default-week mon="0" tue="0" wed="0" thu="0" fri="0" sat="1" sun="1"/>
+      <overridden-day-types>
+        <overridden-day-type id="0">
+          <interval start="0800" end="1200"/>
+          <interval start="1300" end="1700"/>
+        </overridden-day-type>
+      </overridden-day-types>
+      <days/>
+    </calendar>
+  </calendars>
+  <tasks>
+    <task id="1" name="PHASE 1" note="" work="0" start="20130910T000000Z" end="20130910T000000Z" work-start="20130910T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work"/>
+    <task id="2" name="Analyse 1" note="" work="288000" start="20130910T000000Z" end="20130923T170000Z" work-start="20130910T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20130910T000000Z"/>
+    </task>
+    <task id="3" name="Test 1" note="" work="201600" start="20130920T000000Z" end="20130930T170000Z" work-start="20130920T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20130920T000000Z"/>
+    </task>
+    <task id="4" name="Programmation 1" note="" work="345600" start="20130920T000000Z" end="20131007T170000Z" work-start="20130920T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20130920T000000Z"/>
+    </task>
+    <task id="5" name="Assurance qualit&#xE9; 1" note="" work="374400" start="20130919T000000Z" end="20131007T170000Z" work-start="20130919T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20130919T000000Z"/>
+    </task>
+    <task id="6" name="PHASE 2" note="" work="0" start="20131001T000000Z" end="20131001T000000Z" work-start="20131001T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20131001T000000Z"/>
+    </task>
+    <task id="7" name="Analyse 2" note="" work="432000" start="20131001T000000Z" end="20131021T170000Z" work-start="20131001T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20131001T000000Z"/>
+    </task>
+    <task id="8" name="Test 2" note="" work="201600" start="20131018T000000Z" end="20131028T170000Z" work-start="20131018T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20131018T000000Z"/>
+    </task>
+    <task id="9" name="Programmation 2" note="" work="345600" start="20131018T000000Z" end="20131104T170000Z" work-start="20131018T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20131018T000000Z"/>
+    </task>
+    <task id="10" name="Assurance qualit&#xE9; 2" note="" work="374400" start="20131017T000000Z" end="20131104T170000Z" work-start="20131017T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20131017T000000Z"/>
+    </task>
+    <task id="11" name="PHASE 3" note="" work="0" start="20131029T000000Z" end="20131029T000000Z" work-start="20131029T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20131029T000000Z"/>
+    </task>
+    <task id="12" name="Analyse 3" note="" work="288000" start="20131029T000000Z" end="20131111T170000Z" work-start="20131029T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20131029T000000Z"/>
+    </task>
+    <task id="13" name="Test 3" note="" work="201600" start="20131108T000000Z" end="20131118T170000Z" work-start="20131108T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20131108T000000Z"/>
+    </task>
+    <task id="14" name="Programmation 3" note="" work="345600" start="20131108T000000Z" end="20131125T170000Z" work-start="20131108T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20131108T000000Z"/>
+    </task>
+    <task id="15" name="Assurance qualit&#xE9; 3" note="" work="374400" start="20131107T000000Z" end="20131125T170000Z" work-start="20131107T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20131107T000000Z"/>
+    </task>
+    <task id="16" name="PHASE 4" note="" work="0" start="20131119T000000Z" end="20131119T000000Z" work-start="20131119T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20131119T000000Z"/>
+    </task>
+    <task id="17" name="Analyse 4" note="" work="288000" start="20131119T000000Z" end="20131202T170000Z" work-start="20131119T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20131119T000000Z"/>
+    </task>
+    <task id="18" name="Test  4" note="" work="201600" start="20131129T000000Z" end="20131209T170000Z" work-start="20131129T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20131129T000000Z"/>
+    </task>
+    <task id="19" name="Programmation 4" note="" work="345600" start="20131129T000000Z" end="20131216T170000Z" work-start="20131129T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20131129T000000Z"/>
+    </task>
+    <task id="20" name="Assurance qualit&#xE9; 4" note="" work="374400" start="20131128T000000Z" end="20131216T170000Z" work-start="20131128T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20131128T000000Z"/>
+    </task>
+  </tasks>
+  <resource-groups>
+    <group id="1" name="" admin-name="" admin-phone="" admin-email=""/>
+  </resource-groups>
+  <resources>
+    <resource id="1" name="&#xC9;quipes 1 et 5" short-name="" type="1" units="0" email="" note="" std-rate="0"/>
+    <resource id="2" name="&#xC9;quipes 2 et 6" short-name="" type="1" units="0" email="" note="" std-rate="0"/>
+    <resource id="3" name="&#xC9;quipes 3 et 7" short-name="" type="1" units="0" email="" note="" std-rate="0"/>
+    <resource id="4" name="&#xC9;quipes 4 et 8" short-name="" type="1" units="0" email="" note="" std-rate="0"/>
+  </resources>
+  <allocations>
+    <allocation task-id="18" resource-id="1" units="100"/>
+    <allocation task-id="15" resource-id="1" units="100"/>
+    <allocation task-id="9" resource-id="1" units="100"/>
+    <allocation task-id="2" resource-id="1" units="100"/>
+    <allocation task-id="20" resource-id="2" units="100"/>
+    <allocation task-id="14" resource-id="2" units="100"/>
+    <allocation task-id="7" resource-id="2" units="100"/>
+    <allocation task-id="3" resource-id="2" units="100"/>
+    <allocation task-id="17" resource-id="3" units="100"/>
+    <allocation task-id="13" resource-id="3" units="100"/>
+    <allocation task-id="10" resource-id="3" units="100"/>
+    <allocation task-id="4" resource-id="3" units="100"/>
+    <allocation task-id="19" resource-id="4" units="100"/>
+    <allocation task-id="12" resource-id="4" units="100"/>
+    <allocation task-id="8" resource-id="4" units="100"/>
+    <allocation task-id="5" resource-id="4" units="100"/>
+  </allocations>
+</project>
