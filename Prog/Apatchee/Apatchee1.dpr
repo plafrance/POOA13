@@ -3,10 +3,14 @@ program Apatchee1;
 {$APPTYPE CONSOLE}
 
 uses
-   SysUtils,
-   uniteServeur in 'uniteServeur.pas';
-
-uses
+  SysUtils,
+  uniteServeur in 'uniteServeur.pas',
+  uniteRequete in 'uniteRequete.pas',
+  uniteProtocole in 'uniteProtocole.pas',
+  uniteReponse in 'uniteReponse.pas',
+  uniteConnexion in 'uniteConnexion.pas',
+  uniteConnexionHTTPServeur in 'uniteConnexionHTTPServeur.pas',
+  SocketUnit in 'SocketUnit.pas';
 
 var
    numeroDuPort: Word;
@@ -50,8 +54,7 @@ begin
       // Désactive le contrôle des erreurs d'E/S pour la conversion
       {$I-}
       numeroDuPort := strToInt( paramStr(2) );
-      controle := IOResult;
-      if ( controle <> 0 ) or ( numeroDuPort < 1 ) or ( numeroDuPort > 65535 ) then
+      if ( IOResult <> 0 ) or ( numeroDuPort < 1 ) or ( numeroDuPort > 65535 ) then
       begin
          writeln( 'Le numéro de port doit respecter l''intervalle [1, 65535]' );
          halt;

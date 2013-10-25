@@ -3,7 +3,7 @@ unit uniteReponse;
 //Encapsule les données renvoyer par le serveur.
 interface
   type
-    Requete = class
+    Reponse = class
       //Adresse demandeur
       adresseDemandeur : String;
       //Version HTTP 1.0 ou 1.1

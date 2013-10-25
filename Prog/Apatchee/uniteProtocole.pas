@@ -7,7 +7,7 @@ interface
 
 
 uses
-uniteReponse, uniteRequete;
+SysUtils, uniteReponse, uniteRequete;
 
 type
   Protocole = class
@@ -29,29 +29,32 @@ implementation
 //@function
 function Protocole.traiterRequete;
 
+var
+ laReponse : Reponse;
+
 begin
 
   //La fonction prend et affiche l'ensemble des éléments contenus dans
 
   //l'élément passé en paramètre, incluant la date de réception, et les affiche.}
-  write('[', formatDateTimeune('c',Requete.dateReception), ']',' ', uneRequete.adresseDemandeur,' ', uneRequete.methode,' ', uneRequete.url,' ', uneRequete.versionProtocole);
+  write('[', formatDateTime('c',uneRequete.dateReception), ']',' ', uneRequete.adresseDemandeur,' ', uneRequete.methode,' ', uneRequete.url,' ', uneRequete.versionProtocole);
   
   //Création de l'objet réponse qui sera retourné.
-  uneReponse:=Reponse.create;
+  laReponse:=Reponse.create;
 
   //Attribution des valeurs de l'adresse du demandeur et
   //de la version du protocole de l'objet requête à l'objet réponse.}
-  uneReponse.adresseDemandeur:=uneRequete.adresseDemandeur;
-  uneReponse.versionDemandeur:='HTTP/1.1';
+  laReponse.adresseDemandeur:=uneRequete.adresseDemandeur;
+  laReponse.versionProtocole:='HTTP/1.1';
 
   //Attribution d'un code de réponse à l'attribut codeReponse de l'objet
-  //uneReponse le 404 est pour un URL inexistant, de moindre priorité
+  //laReponse le 404 est pour un URL inexistant, de moindre priorité
   //que les suivants.
-  uneReponse.codeReponse:= 404;
+  laReponse.codeReponse:= 404;
 
   //Les messages de réponse sont attribués ici à leurs attributs respectifs
-  uneReponse.message:=('URL introuvable');
-  uneReponse.reponseHTML:=('L’URL n’existe pas sur le serveur, veuillez vérifier l’orthographe et réessayer');
+  laReponse.message:=('URL introuvable');
+  laReponse.reponseHTML:=('L’URL n’existe pas sur le serveur, veuillez vérifier l’orthographe et réessayer');
 
   {Vérification de la méthode envoyée au serveur. Si elle est autre que GET, changement du message d'erreur retourné pour le 501.
 
@@ -60,9 +63,9 @@ begin
   Le code d'erreur 501 est de priotité plus élevée que le 404 quant au retour par notre serveur. }
   if (uneRequete.methode<>'GET') and (uneRequete.methode<>'gET') and (uneRequete.methode<>'GeT') and (uneRequete.methode<>'GEt') and (uneRequete.methode<>'geT') and (uneRequete.methode<>'Get') and (uneRequete.methode<>'gEt') and (uneRequete.methode<>'get') then
   begin
-    uneReponse.codeReponse:=501;
-    uneReponse.message:=('Méthode incompatible');
-    uneReponse.reponseHTML:=('La méthode '+uneRequete.methode+' n''est pas compatible');
+    laReponse.codeReponse:=501;
+    laReponse.message:=('Méthode incompatible');
+    laReponse.reponseHTML:=('La méthode '+uneRequete.methode+' n''est pas compatible');
   end;
 
   {Vérification de la version du protocole. Si celle-ci n'est pas égale
@@ -78,18 +81,19 @@ begin
   d'où son assignation en dernier dans le protocole. }
   if (uneRequete.versionProtocole <> 'HTTP/1.0') and (uneRequete.versionProtocole <> 'HTTP/1.1') then
   begin
-    uneReponse.codeReponse:= 505;
-    uneReponse.message:=('Version HTTP non supportée');
-    uneReponse.reponseHtml:=('Protocole '+uneRequete.Version+' incompatble avec le serveur');
+    laReponse.codeReponse:= 505;
+    laReponse.message:=('Version HTTP non supportée');
+    laReponse.reponseHtml:=('Protocole '+uneRequete.versionProtocole+' incompatble avec le serveur');
   end;
 
   {Le protocole affiche la date de réception de la demande, l'adresse du demandeur,
 
-  maintenant passée en attributs à uneReponse
+  maintenant passée en attributs à laReponse
 
   le codeReponse ainsi que le message déterminés par la fonction traiterRequete}
-  write('[', FormatDateTime('c', Now),']',' ', uneReponse.adresseDemandeur,' ', uneReponse.codeReponse,' ', uneReponse.message);
+  write('[', FormatDateTime('c', Now),']',' ', laReponse.adresseDemandeur,' ', laReponse.codeReponse,' ', laReponse.message);
 
   //Le résultat retourné est un objet de type Réponse.
-  result:=uneReponse;
+  result:=laReponse;
+  end;
 end.

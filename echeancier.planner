@@ -39,7 +39,7 @@
     <task id="7" name="Analyse 2" note="" work="432000" start="20131001T000000Z" end="20131021T170000Z" work-start="20131001T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <constraint type="must-start-on" time="20131001T000000Z"/>
     </task>
-    <task id="8" name="Test 2" note="" work="201600" start="20131018T000000Z" end="20131028T170000Z" work-start="20131018T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="8" name="Test 2" note="" work="345600" start="20131018T000000Z" end="20131104T170000Z" work-start="20131018T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <constraint type="must-start-on" time="20131018T000000Z"/>
     </task>
     <task id="9" name="Programmation 2" note="" work="345600" start="20131018T000000Z" end="20131104T170000Z" work-start="20131018T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">

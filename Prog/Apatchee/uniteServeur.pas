@@ -3,9 +3,10 @@ unit uniteServeur;
 interface
 
 uses
-  uniteConnexionHTTPServeur;
-  uniteProtocole;
-  uniteRequete;
+  SysUtils,
+  uniteConnexionHTTPServeur,
+  uniteProtocole,
+  uniteRequete,
   uniteReponse;
 
 type
