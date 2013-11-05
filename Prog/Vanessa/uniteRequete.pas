@@ -6,7 +6,7 @@ interface
   type
     Requete = class
 
-    public
+    private
       //Adresse de la source
       adresseDemandeur : String;
       //Date reception de la requete
