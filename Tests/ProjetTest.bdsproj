@@ -119,7 +119,7 @@
 			<Directories Name="UnitOutputDir"></Directories>
 			<Directories Name="PackageDLLOutputDir"></Directories>
 			<Directories Name="PackageDCPOutputDir"></Directories>
-			<Directories Name="SearchPath">Y:\TP\Tests\stubs;X:\POO\DUnit\src</Directories>
+			<Directories Name="SearchPath">..\Tests\stubs;..\DUnit\src</Directories>
 			<Directories Name="Packages">vclx;vcl;VclSmp;rtl;vclactnband;vclshlctrls</Directories>
 			<Directories Name="Conditionals"></Directories>
 			<Directories Name="DebugSourceDirs"></Directories>

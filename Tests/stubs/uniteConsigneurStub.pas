@@ -11,19 +11,19 @@ type
 
     public
 
-      procedure consignerErreur(date:TDateTime;origine:String; message:String); override;
+      procedure consignerErreur(origine:String; message:String); override;
 
-      procedure consigner(date:TDateTime;origine:String; message:String); override;
+      procedure consigner(origine:String; message:String); override;
 
   end;
 
 implementation
 
-procedure Consigneur.consignerErreur(date:TDateTime;origine:String; message:String);
+procedure ConsigneurStub.consignerErreur;
 begin
 end;
 
-procedure Consigneur.consigner(date:TDateTime;origine:String; message:String);
+procedure ConsigneurStub.consigner;
 begin
 end;
 

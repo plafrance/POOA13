@@ -1,4 +1,4 @@
-unit uniteConsigneur;
+ï»¿unit uniteConsigneur;
 
 interface
 
@@ -11,34 +11,34 @@ type
 
     public
 
-      //reçoit un message à consigner et affiche à l'écran un message de la forme : date[ERREUR – origine]:
+      //reÃ§it un message ãƒ»consigner et affiche ãƒ»l'é¦—ran un message de la forme: date[ERREUR ãƒ»origine]:message
       //
       //@param date la date courante dans le format "AAAA-MM-JJ HH:MM:SS"
-      //@param origine la partie du serveur d'où origine la consignation
-      //@param message le message de l'erreur à consigner
+      //@param origine la partie du programme d'oãƒ»origine la consignation
+      //@param message le message de l'erreur ãƒ»consigner
 
-      procedure consignerErreur(date:TDateTime;origine:String; message:String);
+      procedure consignerErreur(origine:String; message:String); virtual;
 
-      //reçoit un message à consigner et affiche à l'écran un message de la forme : date [origine]: message.
+      //reÃ§it un message ãƒ»consigner et affiche ãƒ»l'é¦—ran un message de la forme: date [origine]: message.
       //
       //@param date la date courante dans le format "AAAA-MM-JJ HH:MM:SS"
-      //@param origine la partie du serveur d'où origine la consignation
-      //@param message le message à consigner
+      //@param origine la partie du programme d'oãƒ»origine la consignation
+      //@param message le message ãƒ»consigner
 
-      procedure consigner(date:TDateTime;origine:String; message:String);
+      procedure consigner(origine:String; message:String); virtual;
 
   end;
 
 implementation
 
-procedure Consigneur.consignerErreur(date:TDateTime;origine:String; message:String);
+procedure Consigneur.consignerErreur(origine:String; message:String);
 begin
-  writeln(formatDateTime('c',date),' [Erreur - '+origine+']: ',message);
+  writeln(formatDateTime('YYYY-MM-DD HH:MM:SS',date),' [Erreur - '+origine+']: ',message);
 end;
 
-procedure Consigneur.consigner(date:TDateTime;origine:String; message:String);
+procedure Consigneur.consigner(origine:String; message:String);
 begin
-  writeln(formatDateTime('c',date),' [',origine,']: ',message);
+  writeln(formatDateTime('YYYY-MM-DD HH:MM:SS',now),' [',origine,']: ',message);
 end;
 
 end.

@@ -14,6 +14,21 @@ type
 
   published
 
+  // Test sur le constructeur de la classe Requete avec des informations valides.
+  procedure testConstructeurRequeteValide;
+
+  // Test sur le constructeur de la classe Requete avec une adresse incorrecte.
+  procedure testConstructeurRequeteAdresseIncorrecte;
+
+  // Test sur le constructeur de la classe Requete avec une version protocole incorrecte.
+  procedure testConstructeurRequeteVersionProtocoleIncorrecte;
+
+  // Test sur le constructeur de la classe Requete avec une méthode incorrecte.
+  procedure testConstructeurRequeteMethodeIncorrecte;
+
+  // Test sur le constructeur de la classe Requete avec une URL incorrecte.
+  procedure testConstructeurRequeteURLIncorrecte;
+
   // Test sur l'accesseur de l'adresse demandeur de la classe Requete.
   procedure testGetAdresseDemandeur;
 
@@ -34,6 +49,126 @@ end;
 
 implementation
 
+  // Test sur le constructeur de la classe Requete avec des informations valides.
+  procedure testRequete.testConstructeurRequeteValide;
+
+  var
+    // Sert pour la création d'une requête afin de vérifier le bon fonctionnement
+    // du constructeur.
+    uneRequete : Requete;
+
+  begin
+
+    // Création d'une requête pour tester le constructeur de la classe Requete.
+    uneRequete := Requete.create('100.0.0.1',now,'HTTP/1.1','index.html','GET');
+
+    // Destruction de l'objet après la création d'une requête réussie.
+    uneRequete.destroy;
+
+  end;
+
+  // Test sur le constructeur de la classe Requete avec une adresse incorrecte.
+  procedure testRequete.testConstructeurRequeteAdresseIncorrecte;
+
+  var
+    // Sert pour la création d'une requête afin de vérifier le bon fonctionnement
+    // du constructeur.
+    uneRequete : Requete;
+
+  begin
+    // On prévoit la récupération d'une exception si on a des problèmes lors
+    // de la création d'une requête.
+    try
+       // Création d'une requête pour tester le constructeur de la classe Requete.
+       // L'adresse IP est incorrecte. Cette instruction ne devrait pas fonctionner.
+       uneRequete := Requete.create('500.0.0.1',now,'HTTP/1.1','index.html','GET');
+
+       // Destruction de l'objet après la création d'une requête réussie.
+       uneRequete.destroy;
+
+    // La création de la requête a provoqué une exception.
+    except on e:Exception do
+        fail( e.message );
+    end;
+  end;
+
+  // Test sur le constructeur de la classe Requete avec une version protocole incorrecte.
+  procedure testRequete.testConstructeurRequeteVersionProtocoleIncorrecte;
+
+  var
+    // Sert pour la création d'une requête afin de vérifier le bon fonctionnement
+    // du constructeur.
+    uneRequete : Requete;
+
+  begin
+    // On prévoit la récupération d'une exception si on a des problèmes lors
+    // de la création d'une requête.
+    try
+       // Création d'une requête pour tester le constructeur de la classe Requete.
+       // La version du protocole est incorrecte.
+       // Cette instruction ne devrait pas fonctionner.
+       uneRequete := Requete.create('100.0.0.1',now,'HTTP/5.1','index.html','GET');
+
+       // Destruction de l'objet après la création d'une requête réussie.
+       uneRequete.destroy;
+
+    // La création de la requête a provoqué une exception.
+    except on e:Exception do
+        fail( e.message );
+    end;
+  end;
+
+  // Test sur le constructeur de la classe Requete avec une méthode incorrecte.
+  procedure testRequete.testConstructeurRequeteMethodeIncorrecte;
+
+  var
+    // Sert pour la création d'une requête afin de vérifier le bon fonctionnement
+    // du constructeur.
+    uneRequete : Requete;
+
+  begin
+    // On prévoit la récupération d'une exception si on a des problèmes lors
+    // de la création d'une requête.
+    try
+       // Création d'une requête pour tester le constructeur de la classe Requete.
+       // La méthode de transfert est incorrecte.
+       // Cette instruction ne devrait pas fonctionner.
+       uneRequete := Requete.create('100.0.0.1',now,'HTTP/1.1','index.html','JET');
+
+       // Destruction de l'objet après la création d'une requête réussie.
+       uneRequete.destroy;
+
+    // La création de la requête a provoqué une exception.
+    except on e:Exception do
+        fail( e.message );
+    end;
+  end;
+
+  // Test sur le constructeur de la classe Requete avec une URL incorrecte.
+  procedure testRequete.testConstructeurRequeteURLIncorrecte;
+
+  var
+    // Sert pour la création d'une requête afin de vérifier le bon fonctionnement
+    // du constructeur.
+    uneRequete : Requete;
+
+  begin
+    // On prévoit la récupération d'une exception si on a des problèmes lors
+    // de la création d'une requête.
+    try
+       // Création d'une requête pour tester le constructeur de la classe Requete.
+       // L'URL est incorrecte. Cette instruction ne devrait pas fonctionner.
+       uneRequete := Requete.create('100.0.0.1',now,'HTTP/1.1','index.mtml','GET');
+
+       // Destruction de l'objet après la création d'une requête réussie.
+       uneRequete.destroy;
+
+    // La création de la requête a provoqué une exception.
+    except on e:Exception do
+        fail( e.message );
+    end;
+  end;
+
   // Test sur l'accesseur de l'adresse demandeur de la classe Requete.
   procedure testRequete.testGetAdresseDemandeur;
 
@@ -44,7 +179,7 @@ implementation
 
   begin
     // Création d'un objet de type Requete.
-    uneRequete := Requete.create('100.0.0.1','HTTP/1.1','index.html','GET');
+    uneRequete := Requete.create('100.0.0.1',now,'HTTP/1.1','index.html','GET');
 
     // Vérifie si la valeur retournée par l'accesseur getAdresseDemandeur
     // correspond à la valeur passée au constructeur.
@@ -64,7 +199,7 @@ implementation
 
   begin
     // Création d'un objet de type Requete.
-    uneRequete := Requete.create('100.0.0.1','HTTP/1.1','index.html','GET');
+    uneRequete := Requete.create('100.0.0.1',now,'HTTP/1.1','index.html','GET');
 
     // Vérifie si la valeur retournée par l'accesseur getVersionProtocole
     // correspond à la valeur passée au constructeur.
@@ -84,7 +219,7 @@ implementation
 
   begin
     // Création d'un objet de type Requete.
-    uneRequete := Requete.create('100.0.0.1','HTTP/1.1','index.html','GET');
+    uneRequete := Requete.create('100.0.0.1',now,'HTTP/1.1','index.html','GET');
 
     // Vérifie si la valeur retournée par l'accesseur getURL
     // correspond à la valeur passée au constructeur.
@@ -105,7 +240,7 @@ implementation
 
   begin
     // Création d'un objet de type Requete.
-    uneRequete := Requete.create('100.0.0.1','HTTP/1.1','index.html','GET');
+    uneRequete := Requete.create('100.0.0.1',now,'HTTP/1.1','index.html','GET');
 
     // Vérifie si la valeur retournée par l'accesseur getMethode
     // correspond à la valeur passée au constructeur.
@@ -132,18 +267,18 @@ implementation
     uneDate := now;
 
     // Création d'un objet de type Requete.
-    uneRequete := Requete.create('100.0.0.1','HTTP/1.1','index.html','GET');
+    uneRequete := Requete.create('100.0.0.1',now,'HTTP/1.1','index.html','GET');
 
     // Vérifie si la valeur retournée par l'accesseur getDateReception
     // correspond à la valeur passée au constructeur.
-    check( compareDateTime ( uneRequete.getDateReception, uneDate ) = 0 );
+      check(( compareDate( uneRequete.getDateReception, uneDate ) = 0 ) and
+           ( hoursBetween ( uneRequete.getDateReception, uneDate ) = 0 ) and
+           ( minutesBetween ( uneRequete.getDateReception, uneDate ) = 0 ));
 
     // Destruction de l'objet après la création.
     uneRequete.destroy;
   end;
-
 initialization
   TestFrameWork.RegisterTest(TestRequete.Suite);
-
 end.
  
