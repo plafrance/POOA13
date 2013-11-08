@@ -1,4 +1,4 @@
-ï»¿unit uniteConsigneur;
+unit uniteConsigneur;
 
 interface
 
@@ -11,19 +11,17 @@ type
 
     public
 
-      //reÃ§it un message ãƒ»consigner et affiche ãƒ»l'é¦—ran un message de la forme: date[ERREUR ãƒ»origine]:message
+      //reçoit un message à consigner et affiche à l'écran un message de la forme : date[ERREUR – origine]:
       //
-      //@param date la date courante dans le format "AAAA-MM-JJ HH:MM:SS"
-      //@param origine la partie du programme d'oãƒ»origine la consignation
-      //@param message le message de l'erreur ãƒ»consigner
+      //@param origine la partie du serveur d'où origine la consignation
+      //@param message le message de l'erreur à consigner
 
       procedure consignerErreur(origine:String; message:String); virtual;
 
-      //reÃ§it un message ãƒ»consigner et affiche ãƒ»l'é¦—ran un message de la forme: date [origine]: message.
+      //reçoit un message à consigner et affiche à l'écran un message de la forme : date [origine]: message.
       //
-      //@param date la date courante dans le format "AAAA-MM-JJ HH:MM:SS"
-      //@param origine la partie du programme d'oãƒ»origine la consignation
-      //@param message le message ãƒ»consigner
+      //@param origine la partie du serveur d'où origine la consignation
+      //@param message le message à consigner
 
       procedure consigner(origine:String; message:String); virtual;
 
@@ -33,12 +31,12 @@ implementation
 
 procedure Consigneur.consignerErreur(origine:String; message:String);
 begin
-  writeln(formatDateTime('YYYY-MM-DD HH:MM:SS',date),' [Erreur - '+origine+']: ',message);
+  writeln(formatDateTime('YYYY-MM-DD HH:MM:SS',now),' [Erreur - '+origine+']: ',message);
 end;
 
 procedure Consigneur.consigner(origine:String; message:String);
 begin
-  writeln(formatDateTime('YYYY-MM-DD HH:MM:SS',now),' [',origine,']: ',message);
+  writeln(formatDateTime('YYYY-MM-DD HH:MM:SS',now),' ['+origine+']: ',message);
 end;
 
 end.
