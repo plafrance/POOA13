@@ -23,7 +23,6 @@ type
       leProtocole : Protocole;
 
     //Le consigneur qui réachemine les messages d'erreur et de succès dans un format précis.
-    //FormatDateTime('c', now) permet d'afficher la date sous la forme jj/mm/aaaa hh:mm:ss
       leConsigneur : Consigneur;
 
     public
@@ -32,13 +31,10 @@ type
     // @param unConsigneur qui est de type Consigneur qui consigne les messages d'erreur et de connexion dans un format standardisé.
     // @param unRepertoireDeBase qui est de type string qui représente un répertore existant sur le serveur.
       constructor create(unPort:Word; unConsigneur:Consigneur; unRepertoireDeBase:String);
-    // Destructeur qui détruit les objet connexion, protocole et consigneur.
-    // @param unConsigneur de type Consigneur qui représente le consigneur à détruire.
-      destructor destroy(unConsigneur:Consigneur);
+    // Destructeur qui détruit les objet connexion, protocole.
+      destructor destroy;
     // Démarre le traitement des requêtes
       procedure demarrer;
-
-
 
   end;
 
@@ -57,7 +53,14 @@ implementation
       leConsigneur:=unConsigneur;
 
       // Affichage d'un message standardisé pour confirmer l'initialisation (Instanciation) du serveur.
-      leConsigneur.consigner('Serveur',' Le serveur est connecte sur le port '+ intToStr(unPort));
+      leConsigneur.consigner('Serveur',' Vanessa est démarrée sur le port '+ intToStr(unPort));
+    end;
+
+    //Le destructeur qui détruit les objets de la classe serveur.
+    destructor Serveur.destroy;
+    begin
+      laConnexion.destroy;
+      leProtocole.destroy;
     end;
 
     procedure Serveur.demarrer;
@@ -72,36 +75,22 @@ implementation
       // Ouvre la connexion et attend une requête
         try
           uneRequete := laConnexion.lireRequete;
-          // Message de confirmation de la réception de la requête
-          leConsigneur.consigner('Serveur',' Requête reçue de '+laConnexion.getAdresseDistante+'.');
-        except on e : Exception do
-          leConsigneur.consignerErreur('Serveur',' Erreur d''entrée/sortie: '+ e.Message);
-        end;
-
-
-      // Le protocole traite la requête
-        try
+          // Le protocole traite la requête
           uneReponse := leProtocole.traiterRequete(uneRequete);
+          // Renvoie de la reponse au client
+          laConnexion.ecrireReponse(uneReponse);
+          // Message de confirmation de la réception de la requête
+          leConsigneur.consigner('Serveur',' Requête reçue de '+uneRequete.adresseDemandeur+'.');
         except on e : Exception do
-          leConsigneur.consignerErreur('Serveur',' Erreur d''entrée/sortie: '+ e.Message);
-          //Les consignes sur moodle parlais d'un lancement d'exception mais je ne savais pas ou le mettre
-          // ou même si je devais le mettre?
-          //raise Exception.create('Numéro de port invalide ou déjà utilisé');
+          begin
+            leConsigneur.consignerErreur('Serveur',' Erreur d''entrée/sortie: '+ e.Message);
+            halt;
+          end;
         end;
-        // Renvoie de la reponse au client
-        laConnexion.ecrireReponse(uneReponse);
         // Fermeture de la connexion
         laConnexion.fermerConnexion;
       end;
     end;
-    //Le destructeur qui détruit les objets de la classe serveur.
-    destructor Serveur.destroy(unConsigneur:Consigneur);
-    begin
-      laConnexion.destroy;
-      leProtocole.destroy;
-      unConsigneur.destroy;
-    end;
-    
 end.
 
 
