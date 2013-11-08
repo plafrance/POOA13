@@ -13,7 +13,7 @@ type
 
       //reçoit un message à consigner et affiche à l'écran un message de la forme : date[ERREUR – origine]:
       //
-      //@param origine la partie du serveur d'où origine la consignation
+      //@param origine la partie du serveur d'où origine la consignation.
       //@param message le message de l'erreur à consigner
 
       procedure consignerErreur(origine:String; message:String); virtual;
