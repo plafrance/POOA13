@@ -80,7 +80,7 @@ implementation
           // Renvoie de la reponse au client
           laConnexion.ecrireReponse(uneReponse);
           // Message de confirmation de la réception de la requête
-          leConsigneur.consigner('Serveur',' Requête reçue de '+uneRequete.adresseDemandeur+'.');
+          leConsigneur.consigner('Serveur',' Requête reçue de '+uneRequete.getAdresseDemandeur+'.');
         except on e : Exception do
           begin
             leConsigneur.consignerErreur('Serveur',' Erreur d''entrée/sortie: '+ e.Message);
