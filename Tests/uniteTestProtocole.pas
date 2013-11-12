@@ -2,7 +2,7 @@
 
 interface
 
-uses TestFrameWork, uniteProtocole, uniteRequete, uniteReponse, uniteConsigneurStub;
+uses SysUtils,TestFrameWork, uniteProtocole, uniteRequete, uniteReponse, uniteConsigneur, uniteConsigneurStub;
 
 type
   TestProtocole = class (TTestCase)
@@ -27,7 +27,7 @@ implementation
     objetProtocole:Protocole;
     objetConsigneur:ConsigneurStub;
   begin
-    objetRequete:=Requete.create('127.0.0.1', StrToDate('2013/09/21 10:51'), 'HTTP/1.0', 'GET', '/bob.html');
+    objetRequete:=Requete.create('127.0.0.1', StrToDate('2013-09-21 10:51'), 'HTTP/1.0', 'GET', '/bob.html');
     objetConsigneur:=ConsigneurStub.create;
     objetProtocole:=Protocole.create('C:\', objetConsigneur);
 
@@ -132,11 +132,6 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     objetRequete:=Requete.create('127.0.0.1', StrToDate('2013/09/21 10:51'), 'HTTP/0.9', 'GET', '/bob.html');;
     objetConsigneur:=Consigneur.create;
     objetProtocole:=Protocole.create('C:/', objetConsigneur);
-    objetRequete.setAdresseDemandeur('127.0.0.1');
-    objetRequete.setDateReception(StrToDate('2013/09/21 10:51'));
-    objetRequete.setVersionProtocole('HTTP/0.9');
-    objetRequete.setMethode('GET');
-    objetRequete.setURL('/bob.html');
 
     objetReponse:=objetProtocole.traiterRequete(objetRequete);
     if objetReponse.getVersionProtocole<>'HTTP/1.1' then
@@ -203,9 +198,8 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     protocoleHTTP:Protocole;
   begin
     leConsigneur:= Consigneur.create;
-    protocoleHTTP:=Protocole.create(leConsigneur, 'C:\');
-    check(protocoleHTTP.getRepertoire='C:\');
-    check(protocoleHTTP.consigneur=leConsigneur);
+    protocoleHTTP:=Protocole.create('C:\',leConsigneur);
+    check(protocoleHTTP.getRepertoireDeBase='C:\');
   end;
 
   
@@ -215,9 +209,8 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     protocoleHTTP:Protocole;
     begin
     leConsigneur:= Consigneur.create;
-    protocoleHTTP:=Protocole.create(leConsigneur, 'C:\RepertoireInexistant');
-    check(protocoleHTTP.getRepertoire='C:\RepertoireInexistant');
-    check(protocoleHTTP.consigneur=leConsigneur); //à venir dans l'analyse, exception si répertoire inexistant
+    protocoleHTTP:=Protocole.create('C:\RepertoireInexistant', leConsigneur);
+    check(protocoleHTTP.getRepertoireDeBase='C:\RepertoireInexistant');
   end;
 
 
@@ -227,10 +220,9 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     protocoleHTTP:Protocole;
   begin
     leConsigneur:= Consigneur.create;
-    protocoleHTTP:=Protocole.create(leConsigneur, 'C:\RepertoireTest\');
-    protocoleHTTP.setRepertoire('C:\UnAutreRepertoire\');
-    check(protocoleHTTP.getRepertoire='C:\UnAutreRepertoire\');
-    check(protocoleHTTP.consigneur=leConsigneur);
+    protocoleHTTP:=Protocole.create('C:\RepertoireTest\',leConsigneur);
+    protocoleHTTP.setRepertoireDeBase('C:\UnAutreRepertoire\');
+    check(protocoleHTTP.getRepertoireDeBase='C:\UnAutreRepertoire\');
   end;
 
 initialization
