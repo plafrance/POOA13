@@ -9,33 +9,36 @@ uses
   uniteProtocole,
   uniteRequete,
   uniteReponse;
-  
 
 type
 
-   //Un serveur HTTP minimaliste, supportant la méthode GET du protocole HTTP 1.1 uniquement.
+   //Un serveur HTTP minimaliste, supportant la mÃ©thode GET du protocole HTTP 1.1 uniquement.
   Serveur = class
     private
-    // Le chemin par lequel les requêtes sont envoyées au serveur
-    // et les réponses sont retournées au client
+    // Le chemin par lequel les requÃªtes sont envoyÃ©es au serveur
+    // et les rÃ©ponses sont retournÃ©es au client
       laConnexion : ConnexionHTTPServeur;
 
-    // Le protocole HTTP par lequel les requêtes sont traitées
+    // Le protocole HTTP par lequel les requÃªtes sont traitÃ©es
       leProtocole : Protocole;
 
-    //Le consigneur qui réachemine les messages d'erreur et de succès dans un format précis.
+    //Le consigneur qui rÃ©achemine les messages d'erreur et de succÃ¨s dans un format prÃ©cis.
+    //FormatDateTime('c', now) permet d'afficher la date sous la forme jj/mm/aaaa hh:mm:ss
       leConsigneur : Consigneur;
 
     public
-    // Permet d'initialiser le serveur en créant la connexion et le protocole
-    // @param unPort le numéro du port sur lequel le serveur écoute les requêtes
-    // @param unConsigneur qui est de type Consigneur qui consigne les messages d'erreur et de connexion dans un format standardisé.
-    // @param unRepertoireDeBase qui est de type string qui représente un répertore existant sur le serveur.
+    // Permet d'initialiser le serveur en crÃ©ant la connexion et le protocole
+    // @param unPort le numÃ©ro du port sur lequel le serveur Ã©coute les requÃªtes
+    // @param unConsigneur qui est de type Consigneur qui consigne les messages d'erreur et de connexion dans un format standardisÃ©.
+    // @param unRepertoireDeBase qui est de type string qui reprÃ©sente un rÃ©pertore existant sur le serveur.
       constructor create(unPort:Word; unConsigneur:Consigneur; unRepertoireDeBase:String);
-    // Destructeur qui détruit les objet connexion, protocole.
-      destructor destroy;
-    // Démarre le traitement des requêtes
+    // Destructeur qui dÃ©truit les objet connexion, protocole et consigneur.
+    // @param unConsigneur de type Consigneur qui reprÃ©sente le consigneur Ã  dÃ©truire.
+      destructor destroy(unConsigneur:Consigneur);
+    // DÃ©marre le traitement des requÃªtes
       procedure demarrer;
+
+
 
   end;
 
@@ -53,15 +56,8 @@ implementation
 
       leConsigneur:=unConsigneur;
 
-      // Affichage d'un message standardisé pour confirmer l'initialisation (Instanciation) du serveur.
-      leConsigneur.consigner('Serveur',' Vanessa est démarrée sur le port '+ intToStr(unPort));
-    end;
-
-    //Le destructeur qui détruit les objets de la classe serveur.
-    destructor Serveur.destroy;
-    begin
-      laConnexion.destroy;
-      leProtocole.destroy;
+      // Affichage d'un message standardisÃ© pour confirmer l'initialisation (Instanciation) du serveur.
+      leConsigneur.consigner('Serveur',' Le serveur est connecte sur le port '+ intToStr(unPort));
     end;
 
     procedure Serveur.demarrer;
@@ -73,25 +69,38 @@ implementation
     // Boucler infiniment
       while true do
       begin
-      // Ouvre la connexion et attend une requête
+      // Ouvre la connexion et attend une requÃªte
         try
           uneRequete := laConnexion.lireRequete;
-          // Le protocole traite la requête
-          uneReponse := leProtocole.traiterRequete(uneRequete);
-          // Renvoie de la reponse au client
-          laConnexion.ecrireReponse(uneReponse);
-          // Message de confirmation de la réception de la requête
-          leConsigneur.consigner('Serveur',' Requête reçue de '+uneRequete.getAdresseDemandeur+'.');
+          // Message de confirmation de la rÃ©ception de la requÃªte
+          leConsigneur.consigner('Serveur',' RequÃªte reÃ§ue de '+laConnexion.getAdresseDistante+'.');
         except on e : Exception do
-          begin
-            leConsigneur.consignerErreur('Serveur',' Erreur d''entrée/sortie: '+ e.Message);
-            halt;
-          end;
+          leConsigneur.consignerErreur('Serveur',' Erreur d''entrÃ©e/sortie: '+ e.Message);
         end;
+
+
+      // Le protocole traite la requÃªte
+        try
+          uneReponse := leProtocole.traiterRequete(uneRequete);
+        except on e : Exception do
+          leConsigneur.consignerErreur('Serveur',' Erreur d''entrÃ©e/sortie: '+ e.Message);
+          //Les consignes sur moodle parlais d'un lancement d'exception mais je ne savais pas ou le mettre
+          // ou mÃªme si je devais le mettre?
+          //raise Exception.create('NumÃ©ro de port invalide ou dÃ©jÃ  utilisÃ©');
+        end;
+        // Renvoie de la reponse au client
+        laConnexion.ecrireReponse(uneReponse);
         // Fermeture de la connexion
         laConnexion.fermerConnexion;
       end;
     end;
+    //Le destructeur qui dÃ©truit les objets de la classe serveur.
+    destructor Serveur.destroy(unConsigneur:Consigneur);
+    begin
+      laConnexion.destroy;
+      leProtocole.destroy;
+      unConsigneur.destroy;
+    end;
+    
 end.
-
 
