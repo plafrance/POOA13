@@ -8,7 +8,7 @@ uses
 const
 
   //journalSucces est fichier texte conservant le nom de fichier acces.log.
-  journalSucess= 'acces.log';
+  journalSucces= 'acces.log';
 
   //journalErreur est fichier texte conservant le nom de fichier erreurs.log.
   journalErreur= 'erreurs.log';
@@ -20,6 +20,11 @@ type
       //repertoireJournaux représentant le nom du répertoire dans lequel les journaux sont conservés.
       repertoireJournaux: String;
 
+      fichierAcces: TextFile;
+      fichierErreur: TextFile;
+
+      procedure ouvertureFichier( nomFichier: String; var fichier: TextFile );
+
     public
       //creer l'objet consigneur
       //
@@ -27,14 +32,14 @@ type
       //
       constructor create( unRepertoireJournaux:String );
 
-      //La procedure consigner reçoit un message à consigner et consigne un message de la forme : date [origine]: messageConsigner.
+      //La procedure consigner reçoit un message à consigner et consigne un message de la forme : date [origine]: messageConsigner.
       //
       //@param origine la partie du serveur d'où origine la consignation de type string
       //@param messageConsigne le message de l'erreur à consigner de type string.
       //
       procedure consigner( origine: String; messageConsigne: String );
 
-      //La procédure consignerErreur reçoit un message à consigner et consigne un message de la forme : date[ERREUR – origine]: messageConsigner.
+      //La procédure consignerErreur reçoit un message à consigner et consigne un message de la forme : date[ERREUR – origine]: messageConsigner.
       //
       //@param origine est la partie du serveur d'où origine la consignation de type string
       //@param messageConsigne est le message de l'erreur à consigner de type string
@@ -55,64 +60,50 @@ implementation
 
 
 constructor Consigneur.create( unRepertoireJournaux: String );
-var
-  //compteur de la boucle.
-  compteur: Byte;
-  //nomFichier est la variable qui va contenir le chemin d'acces des fichiers.
-  nomFichier: String;
-  //fichier est la variable qui contiendra le pointeur au fichier fournit par le SE.
-  fichier:TextFile;
 begin
   repertoireJournaux:= unRepertoireJournaux;
+  ouvertureFichier( journalSucces, fichierAcces );
+  ouvertureFichier( journalErreur, fichierErreur );
+end;
 
-  compteur:= 1;
+procedure Consigneur.ouvertureFichier( nomFichier: String; var fichier: TextFile );
+begin
+  assignFile( fichier, nomFichier );
 
-  nomFichier:= repertoireJournaux+journalSucess;
+  if FileExists( repertoireJournaux + nomFichier  ) then
+    begin
+      try
 
-  while compteur <= 2 do
-  begin
-    assignFile( fichier, nomFichier );
+        append( fichier );
 
-    if not FileExists( repertoireJournaux + nomFichier ) then
+      except on e:Exception do
       begin
-        try
-
-          rewrite( fichier );
-
-        except on e:Exception do
-          raise exception.create( 'Incapable de créer le fichier ' + nomFichier + ' du répertoire ' + repertoireJournaux + '.' );
-        end
-      end
-    else
-      begin
-        try
-
-          append( fichier );
-
-        except on e:Exception do
-        begin
-          raise exception.create( 'Incapable d''ouvrir le fichier ' + journalErreur + ' du répertoire ' + repertoireJournaux + '. Veuillez vérifier le chemin d''accès et les permissions.' );
-        end;
-        end;
-        compteur:= compteur + 1;
-
-        nomFichier:= journalErreur;
+        raise exception.create( 'Incapable d''ouvrir le fichier ' + nomFichier + ' du répertoire ' + repertoireJournaux + '. Veuillez vérifier le chemin d''accès et les permissions.' );
       end;
-  end;
+      end;
+    end
+  else
+    begin
+      try
+
+        rewrite( fichier );
+
+      except on e:Exception do
+        raise exception.create( 'Incapable de créer le fichier ' + nomFichier + ' du répertoire ' + repertoireJournaux + '.' );
+      end;
+    end;
 end;
 
 procedure Consigneur.consigner( origine: String; messageConsigne: String );
 var
   uneLigne: String;
-  fichier: TextFile;
   nomFichier: String;
-
 begin
   try
 
-    uneLigne:=formatDateTime( 'YYYY-MM-DD HH:MM:SS', now )+ '[' + origine + ']'+ messageConsigne;
+    uneLigne:=formatDateTime( 'YYYY-MM-DD HH:MM:SS', now ) + ' [' + origine + '] ' + messageConsigne;
 
-    writeln( fichier, uneLigne );
+    writeln( fichierAcces, uneLigne );
 
   except on e: Exception do
   begin
@@ -126,13 +117,12 @@ procedure Consigneur.consignerErreur( origine:String;messageConsigne:String );
    var
     uneLigne: String;
     nomFichier: String;
-    fichier:TextFile;
   begin
     try
 
-      uneLigne:=formatDateTime('YYYY-MM-DD HH:MM:SS',now)+ ' [Erreur - ' + origine + ']'+ messageConsigne;
+      uneLigne:=formatDateTime('YYYY-MM-DD HH:MM:SS',now) + ' [ERREUR - ' + origine + '] ' + messageConsigne;
 
-      writeln( fichier, uneLigne );
+      writeln( fichierErreur, uneLigne );
 
     except on e: Exception do
     begin
@@ -148,25 +138,20 @@ begin
 end;
 
 destructor Consigneur.destroy;
-var
-  nomFichier: String;
-  fichier:TextFile;
 begin
-  nomFichier:= journalSucess;
   try
-    close( fichier );
+    close( fichierAcces );
   except on e:Exception do
   begin
-    raise exception.create( 'Incapable de fermer le fichier' + nomFichier + 'du répertoire' + repertoireJournaux );
+    raise exception.create( 'Incapable de fermer le fichier' + journalSucces + 'du répertoire' + repertoireJournaux );
     exit;
   end;
   end;
-  nomFichier:= journalErreur;
   try
-    close( fichier );
+    close( fichierErreur );
   except on e:Exception do
   begin
-    raise exception.create( 'Incapable de fermer le fichier' + nomFichier + 'du répertoire' + repertoireJournaux );
+    raise exception.create( 'Incapable de fermer le fichier' + journalErreur + 'du répertoire' + repertoireJournaux );
     exit;
   end;
   end;
