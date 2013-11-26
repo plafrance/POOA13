@@ -27,7 +27,7 @@ implementation
     objetProtocole:Protocole;
     objetConsigneur:ConsigneurStub;
   begin
-    objetRequete:=Requete.create('127.0.0.1', StrToDate('2013-09-21 10:51'), 'HTTP/1.0', 'GET', '/bob.html');
+    objetRequete:=Requete.create('127.0.0.1', StrToDateTime('2013-09-21 10:51'), 'HTTP/1.0', 'GET', '/bob.html');
     objetConsigneur:=ConsigneurStub.create('');
     objetProtocole:=Protocole.create('C:\', objetConsigneur);
 
@@ -56,7 +56,7 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     objetProtocole:Protocole;
     objetConsigneur:ConsigneurStub;
   begin
-    objetRequete:=Requete.create('127.0.0.1', StrToDate('2013/09/21 10:51'), 'HTTP/1.0', 'get', '/bob.html');
+    objetRequete:=Requete.create('127.0.0.1', StrToDateTime('2013-09-21 10:51'), 'HTTP/1.0', 'get', '/bob.html');
     objetConsigneur:=ConsigneurStub.create('');
     objetProtocole:=Protocole.create('C:/', objetConsigneur);
 
@@ -83,7 +83,7 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     objetProtocole:Protocole;
     objetConsigneur:ConsigneurStub;
   begin
-    objetRequete:=Requete.create('127.0.0.1', StrToDate('2013/09/21 10:51'), 'HTTP/1.0', 'Post', '/bob.html');
+    objetRequete:=Requete.create('127.0.0.1', StrToDateTime('2013-09-21 10:51'), 'HTTP/1.0', 'Post', '/bob.html');
     objetConsigneur:=ConsigneurStub.create('');
     objetProtocole:=Protocole.create('C:/', objetConsigneur);
 
@@ -108,7 +108,7 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     objetProtocole:Protocole;
     objetConsigneur:Consigneur;
   begin 
-    objetRequete:=Requete.create('127.0.0.1', StrToDate('2013/09/21 10:51'), 'HTTP/1.1', 'GET', '/bob.html');
+    objetRequete:=Requete.create('127.0.0.1', StrToDateTime('2013-09-21 10:51'), 'HTTP/1.1', 'GET', '/bob.html');
     objetConsigneur:=ConsigneurStub.create('');
     objetProtocole:=Protocole.create('C:/', objetConsigneur);
 
@@ -129,7 +129,7 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     objetProtocole:Protocole;
     objetConsigneur:Consigneur;
   begin 
-    objetRequete:=Requete.create('127.0.0.1', StrToDate('2013/09/21 10:51'), 'HTTP/0.9', 'GET', '/bob.html');;
+    objetRequete:=Requete.create('127.0.0.1', StrToDateTime('2013-09-21 10:51'), 'HTTP/0.9', 'GET', '/bob.html');;
     objetConsigneur:=ConsigneurStub.create('');
     objetProtocole:=Protocole.create('C:/', objetConsigneur);
 
@@ -154,7 +154,7 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     objetProtocole:Protocole;
     objetConsigneur:Consigneur;
   begin
-    objetRequete:=Requete.create('127.0.0.1', StrToDate('2013/09/21 10:51'), 'HTTP/0.9', 'Post', '/bob.html');
+    objetRequete:=Requete.create('127.0.0.1', StrToDateTime('2013-09-21 10:51'), 'HTTP/0.9', 'Post', '/bob.html');
     objetConsigneur:=ConsigneurStub.create('');
     objetProtocole:=Protocole.create(' ', objetConsigneur);
 
@@ -176,7 +176,7 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     objetProtocole:Protocole;
     objetConsigneur:Consigneur;
   begin
-    objetRequete:=Requete.create('127.0.0.1', StrToDate('2013/09/21 10:51'), 'Salut les copains', 'GET', '/bob.html');;
+    objetRequete:=Requete.create('127.0.0.1', StrToDateTime('2013-09-21 10:51'), 'Salut les copains', 'GET', '/bob.html');;
     objetConsigneur:=ConsigneurStub.create('');
 
     try

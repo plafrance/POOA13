@@ -30,7 +30,7 @@ type
       //
       //@param unRepertoireJournaux où se trouvent les fichiers journaux. Il est de type string.
       //
-      constructor create( unRepertoireJournaux:String );
+      constructor create( unRepertoireJournaux:String ); virtual;
 
       //La procedure consigner reçoit un message à consigner et consigne un message de la forme : date [origine]: messageConsigner.
       //
