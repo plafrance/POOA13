@@ -4,7 +4,7 @@ interface
 
 uses
   SysUtils,
-  uniteConsigneur,
+  uniteConsigneurStub,
   uniteProtocole,
   uniteRequete,
   uniteReponse;
@@ -18,7 +18,7 @@ type
     public
     // Permet d'initialiser le serveur en créant la connexion et le protocole
     // @param unPort le numéro du port sur lequel le serveur écoute les requêtes
-      constructor create(unPort:Word; unConsigneur:Consigneur; unRepertoireDeBase:String);
+      constructor create(unPort:Word; unConsigneur:ConsigneurStub; unRepertoireDeBase:String);
 
       destructor destroy;
     // Démare le traitement des requêtes
@@ -31,7 +31,7 @@ type
 implementation
 
 
-    constructor Serveur.create(unPort:Word; unConsigneur:Consigneur; unRepertoireDeBase:String);
+    constructor Serveur.create(unPort:Word; unConsigneur:ConsigneurStub; unRepertoireDeBase:String);
     begin end;
 
   procedure Serveur.demarrer;

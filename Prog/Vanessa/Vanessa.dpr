@@ -18,6 +18,7 @@ uses
 const
    nomServeur = 'Vanessa';
 var
+   //Type de conversion est utilisé pour erreurPos
    typeConversion,numeroDuPort:Word;
    i:Byte;
    //erreurPos veut dire qu'il y a eu une exception(un erreur est survenu,ErreurPositive)
@@ -53,7 +54,7 @@ begin
       //vérifie dans la ligne de commande si l'utilisateur ne veut pas utiliser un repertoire de base peronnalisé
       else if paramStr(i)='-w' then
       begin
-         validerepertoiredebase:= paramStr(i+1);
+         valideRepertoireDeBase:= paramStr(i+1);
          inc(i);
       end
       else
@@ -89,7 +90,7 @@ begin
       if (strToInt(validePort)<1) or (strToInt(validePort)>65535)then
       begin
          leConsigneur.consignerErreur(nomServeur,'Erreur, numéro de port hors intervalle');
-         raise Exception.create('Le numéro de port est invalide');
+         writeln('Le numéro de port est invalide');
          halt;
       end;
       numeroDuPort:=strToInt(validePort);
@@ -100,14 +101,14 @@ begin
    if not directoryExists(validerepertoiredebase) then
    begin
       leConsigneur.consignerErreur(nomServeur,'Erreur, répertoire non existant');
-      raise Exception.create('Le répertoire source est invalide ou inexistant');
+      writeln('Le répertoire source est invalide ou inexistant');
       halt;
    end;
 
    try
       // Instanciation du serveur
       // L'initialisation du serveur sur un numéro de port et un répertoire de base.
-      leServeur := Serveur.create(numeroDuPort,leConsigneur,validerepertoiredebase);
+      leServeur := Serveur.create(numeroDuPort,leConsigneur,validerepertoiredebase+'\');
    except on e: Exception do
    begin
       //Consigne l'erreur et le concatène avec le message d'erreur de l'objet Exception.

@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <PersonalityInfo>
-    <Option>
-      <Option Name="Personality">Default.Personality</Option>
-      <Option Name="ProjectType"></Option>
-      <Option Name="Version">1.0</Option>
-      <Option Name="GUID">{BF61A7A1-8EF0-4BFA-B8AC-91FEB3AF94F2}</Option>
-    </Option>
-  </PersonalityInfo>
-  <Default.Personality>
-    
-    <Projects>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">Default.Personality</Option>
+			<Option Name="ProjectType"></Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{BF61A7A1-8EF0-4BFA-B8AC-91FEB3AF94F2}</Option>
+		</Option>
+	</PersonalityInfo>
+	<Default.Personality>  <Projects>
       <Projects Name="Vanessa.exe">Vanessa.bdsproj</Projects>
       <Projects Name="ProjetTest.exe">..\..\Tests\ProjetTest.bdsproj</Projects>
-      <Projects Name="TestConsigner.exe">..\..\Tests\TestConsigner\TestConsigner.bdsproj</Projects>
-      <Projects Name="TestConsignerErreur.exe">..\..\Tests\TestConsignerErreur\TestConsignerErreur.bdsproj</Projects>
-      <Projects Name="Targets">Vanessa.exe ProjetTest.exe TestConsigner.exe TestConsignerErreur.exe</Projects>
+      <Projects Name="Targets">Vanessa.exe ProjetTest.exe</Projects>
     </Projects>
-    <Dependencies/>
+    <Dependencies>
+      <Dependency GUID="{AFEE751D-6375-496C-B4DE-91792B229AB9}">
+        <Dependency GUID="{2A89876D-9D30-4C63-8D32-144204AEE662}"/>
+      </Dependency>
+    </Dependencies>
   </Default.Personality>
 </BorlandProject>

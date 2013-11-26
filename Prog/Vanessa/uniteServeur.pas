@@ -1,4 +1,4 @@
-unit uniteServeur;
+﻿unit uniteServeur;
 
 interface
 
@@ -34,7 +34,7 @@ type
       constructor create(unPort:Word; unConsigneur:Consigneur; unRepertoireDeBase:String);
     // Destructeur qui détruit les objet connexion, protocole et consigneur.
     // @param unConsigneur de type Consigneur qui représente le consigneur à détruire.
-      destructor destroy(unConsigneur:Consigneur);
+      destructor destroy;
     // Démarre le traitement des requêtes
       procedure demarrer;
 
@@ -95,11 +95,10 @@ implementation
       end;
     end;
     //Le destructeur qui détruit les objets de la classe serveur.
-    destructor Serveur.destroy(unConsigneur:Consigneur);
+    destructor Serveur.destroy;
     begin
       laConnexion.destroy;
       leProtocole.destroy;
-      unConsigneur.destroy;
     end;
     
 end.

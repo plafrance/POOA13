@@ -51,7 +51,7 @@ end;
 procedure ConnexionHttpServeur.ecrireReponse( uneReponse : Reponse );
 begin
 
-   ecrireChaine( 'HTTP/1.1 ' + intToStr(uneReponse.getCodeReponse) + ' ' + uneReponse.getMessage + CRLF + CRLF);
+   ecrireChaine( 'HTTP/1.1 ' + intToStr(uneReponse.getCodeReponse) + ' ' + uneReponse.getMessage + CRLF + CRLF + uneReponse.getReponseHtml + CRLF);
 
 end;
 

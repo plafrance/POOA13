@@ -89,6 +89,7 @@ begin
          reset(unFichier);
         unCodeReponse:=200;
         unMessage:='OK';
+        uneReponseHtml := '';
         while not eof (unFichier) do
           begin
             try
@@ -134,7 +135,7 @@ begin
               ((uneRequete.getVersionProtocole[6] > '9')) or
           ((uneRequete.getVersionProtocole[8] < '0')) or
               ((uneRequete.getVersionProtocole[8] > '9')) or
-          (uneRequete.getVersionProtocole[7] <> '.') or (length(uneRequete.getVersionProtocole) <> 9) then
+          (uneRequete.getVersionProtocole[7] <> '.') or (length(uneRequete.getVersionProtocole) <> 8) then
    begin
       raise Exception.create('Version HTTP incompatible');
    end;

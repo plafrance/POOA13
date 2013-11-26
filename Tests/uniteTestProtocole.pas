@@ -28,7 +28,7 @@ implementation
     objetConsigneur:ConsigneurStub;
   begin
     objetRequete:=Requete.create('127.0.0.1', StrToDate('2013-09-21 10:51'), 'HTTP/1.0', 'GET', '/bob.html');
-    objetConsigneur:=ConsigneurStub.create;
+    objetConsigneur:=ConsigneurStub.create('');
     objetProtocole:=Protocole.create('C:\', objetConsigneur);
 
     objetReponse:=objetProtocole.traiterRequete(objetRequete);
@@ -57,7 +57,7 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     objetConsigneur:ConsigneurStub;
   begin
     objetRequete:=Requete.create('127.0.0.1', StrToDate('2013/09/21 10:51'), 'HTTP/1.0', 'get', '/bob.html');
-    objetConsigneur:=ConsigneurStub.create;
+    objetConsigneur:=ConsigneurStub.create('');
     objetProtocole:=Protocole.create('C:/', objetConsigneur);
 
     objetReponse:=objetProtocole.traiterRequete(objetRequete);
@@ -84,7 +84,7 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     objetConsigneur:ConsigneurStub;
   begin
     objetRequete:=Requete.create('127.0.0.1', StrToDate('2013/09/21 10:51'), 'HTTP/1.0', 'Post', '/bob.html');
-    objetConsigneur:=ConsigneurStub.create;
+    objetConsigneur:=ConsigneurStub.create('');
     objetProtocole:=Protocole.create('C:/', objetConsigneur);
 
     objetReponse:=objetProtocole.traiterRequete(objetRequete);
@@ -109,7 +109,7 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     objetConsigneur:Consigneur;
   begin 
     objetRequete:=Requete.create('127.0.0.1', StrToDate('2013/09/21 10:51'), 'HTTP/1.1', 'GET', '/bob.html');
-    objetConsigneur:=Consigneur.create;
+    objetConsigneur:=ConsigneurStub.create('');
     objetProtocole:=Protocole.create('C:/', objetConsigneur);
 
     objetReponse:=objetProtocole.traiterRequete(objetRequete);
@@ -130,7 +130,7 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     objetConsigneur:Consigneur;
   begin 
     objetRequete:=Requete.create('127.0.0.1', StrToDate('2013/09/21 10:51'), 'HTTP/0.9', 'GET', '/bob.html');;
-    objetConsigneur:=Consigneur.create;
+    objetConsigneur:=ConsigneurStub.create('');
     objetProtocole:=Protocole.create('C:/', objetConsigneur);
 
     objetReponse:=objetProtocole.traiterRequete(objetRequete);
@@ -155,7 +155,7 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     objetConsigneur:Consigneur;
   begin
     objetRequete:=Requete.create('127.0.0.1', StrToDate('2013/09/21 10:51'), 'HTTP/0.9', 'Post', '/bob.html');
-    objetConsigneur:=Consigneur.create;
+    objetConsigneur:=ConsigneurStub.create('');
     objetProtocole:=Protocole.create(' ', objetConsigneur);
 
     objetReponse:=objetProtocole.traiterRequete(objetRequete);
@@ -177,7 +177,7 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     objetConsigneur:Consigneur;
   begin
     objetRequete:=Requete.create('127.0.0.1', StrToDate('2013/09/21 10:51'), 'Salut les copains', 'GET', '/bob.html');;
-    objetConsigneur:=Consigneur.create;
+    objetConsigneur:=ConsigneurStub.create('');
 
     try
       objetReponse:=objetProtocole.traiterRequete(objetRequete);
@@ -197,18 +197,18 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     leConsigneur:Consigneur;
     protocoleHTTP:Protocole;
   begin
-    leConsigneur:= Consigneur.create;
+    leConsigneur:= ConsigneurStub.create('');
     protocoleHTTP:=Protocole.create('C:\',leConsigneur);
     check(protocoleHTTP.getRepertoireDeBase='C:\');
   end;
 
-  
+
   procedure TestProtocole.testCreateRepertoireInexistant;
   var
     leConsigneur:Consigneur;
     protocoleHTTP:Protocole;
     begin
-    leConsigneur:= Consigneur.create;
+    leConsigneur:= ConsigneurStub.create('');
     protocoleHTTP:=Protocole.create('C:\RepertoireInexistant', leConsigneur);
     check(protocoleHTTP.getRepertoireDeBase='C:\RepertoireInexistant');
   end;
@@ -219,7 +219,7 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     leConsigneur:Consigneur;
     protocoleHTTP:Protocole;
   begin
-    leConsigneur:= Consigneur.create;
+    leConsigneur:= ConsigneurStub.create('');
     protocoleHTTP:=Protocole.create('C:\RepertoireTest\',leConsigneur);
     protocoleHTTP.setRepertoireDeBase('C:\UnAutreRepertoire\');
     check(protocoleHTTP.getRepertoireDeBase='C:\UnAutreRepertoire\');

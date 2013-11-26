@@ -119,7 +119,7 @@
 			<Directories Name="UnitOutputDir"></Directories>
 			<Directories Name="PackageDLLOutputDir"></Directories>
 			<Directories Name="PackageDCPOutputDir"></Directories>
-			<Directories Name="SearchPath">..\DUnit\src;Y:\TP\Prog\Vanessa;Y:\TP\Tests\stubs</Directories>
+			<Directories Name="SearchPath">U:\Projets Borland Studio\DUnit\src;U:\A13\TP\POOA13\Prog\Vanessa;U:\A13\TP\POOA13\Tests\stubs</Directories>
 			<Directories Name="Packages">vclx;vcl;VclSmp;rtl;vclactnband;vclshlctrls</Directories>
 			<Directories Name="Conditionals"></Directories>
 			<Directories Name="DebugSourceDirs"></Directories>
@@ -158,9 +158,6 @@
 			<VersionInfoKeys Name="ProductName"></VersionInfoKeys>
 			<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
 			<VersionInfoKeys Name="Comments"></VersionInfoKeys>
-		</VersionInfoKeys>  <Excluded_Packages>
-      <Excluded_Packages Name="C:\Documents and Settings\Patrick Lafrance\My Documents\Projets Borland Studio\Bpl\ComposantesPersonnelles.bpl">(sans titre)</Excluded_Packages>
-      <Excluded_Packages Name="Z:\TP\TP3\TNGImage\TNGImage\Package\d6\NGImg1_D60.bpl">NGImage Components Design-Time Package</Excluded_Packages>
-    </Excluded_Packages>
-  </Delphi.Personality>
+		</VersionInfoKeys>
+	</Delphi.Personality>
 </BorlandProject>

@@ -83,22 +83,29 @@ end;
 
 function Reponse.getAdresseDemandeur:String;
 begin
+  result:='';
 end;
 
 function Reponse.getVersionProtocole:String;
 begin
+  result:='';
 end;
 
 function Reponse.getCodeReponse:Word;
 begin
+  result:=0;
 end;
 
 function Reponse.getMessage:String;
 begin
+  result:='';
+
 end;
 
 function Reponse.getReponseHtml:String;
 begin
+  result:='';
+
 end;
 
 end.

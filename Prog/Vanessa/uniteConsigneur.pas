@@ -1,4 +1,4 @@
-unit uniteConsigneur;
+﻿unit uniteConsigneur;
 
 interface
 
@@ -37,14 +37,14 @@ type
       //@param origine la partie du serveur d'où origine la consignation de type string
       //@param messageConsigne le message de l'erreur à consigner de type string.
       //
-      procedure consigner( origine: String; messageConsigne: String );
+      procedure consigner( origine: String; messageConsigne: String ); virtual;
 
       //La procédure consignerErreur reçoit un message à consigner et consigne un message de la forme : date[ERREUR – origine]: messageConsigner.
       //
       //@param origine est la partie du serveur d'où origine la consignation de type string
       //@param messageConsigne est le message de l'erreur à consigner de type string
       //
-      procedure consignerErreur( origine: String; messageConsigne: String );
+      procedure consignerErreur( origine: String; messageConsigne: String ); virtual;
 
       //La fonction getRepertoireJournaux sert à prendre repertoireJournaux et le retourne ensuite.
       //
@@ -68,7 +68,7 @@ end;
 
 procedure Consigneur.ouvertureFichier( nomFichier: String; var fichier: TextFile );
 begin
-  assignFile( fichier, nomFichier );
+  assignFile( fichier, repertoireJournaux + nomFichier );
 
   if FileExists( repertoireJournaux + nomFichier  ) then
     begin
@@ -104,6 +104,7 @@ begin
     uneLigne:=formatDateTime( 'YYYY-MM-DD HH:MM:SS', now ) + ' [' + origine + '] ' + messageConsigne;
 
     writeln( fichierAcces, uneLigne );
+    flush(fichierAcces);
 
   except on e: Exception do
   begin
@@ -123,6 +124,7 @@ procedure Consigneur.consignerErreur( origine:String;messageConsigne:String );
       uneLigne:=formatDateTime('YYYY-MM-DD HH:MM:SS',now) + ' [ERREUR - ' + origine + '] ' + messageConsigne;
 
       writeln( fichierErreur, uneLigne );
+      flush(fichierErreur);
 
     except on e: Exception do
     begin

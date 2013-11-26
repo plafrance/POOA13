@@ -54,6 +54,7 @@ implementation
 
 function Protocole.traiterRequete(uneRequete:Requete):Reponse;
 begin
+  result := Reponse.create('', '', 0, '', '');
 end;
 
 constructor Protocole.create(unRepertoire:String;unConsigneur:Consigneur);

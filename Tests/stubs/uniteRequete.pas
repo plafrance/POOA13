@@ -84,22 +84,27 @@ end;
 
 function Requete.getAdresseDemandeur:String;
 begin
+ result := '';
 end;
 
 function Requete.getDateReception:TDateTime;
 begin
+ result := 0;
 end;
 
 function Requete.getVersionProtocole:String;
 begin
+ result := '';
 end;
 
 function Requete.getMethode:String;
 begin
+ result := '';
 end;
 
 function Requete.getUrl:String;
 begin
+ result := '';
 end;
 
 end.
