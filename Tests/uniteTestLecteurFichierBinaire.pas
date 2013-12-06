@@ -7,30 +7,54 @@ uses TestFrameWork, uniteClasse;
 type
   TestLecteurFichierBinaire = class (TTestCase)
      published
-     procedure testGetType;
+     procedure testGetTypeJpg;
+     procedure testGetTypeJpeg;
+     procedure testGetTypeGif;
+     procedure testGetTypeAutres;
      procedure testLireContenuInexistant;
      procedure testLireContenu;
   end;
 
 implementation
 
-    procedure TestLecteurFichierBinaire.testGetType;
+    procedure TestLecteurFichierBinaire.testGetTypeJpg;
     var
       unFichierBinaire : LecteurFichierBinaire;
     begin
-      unFichierBinaire := LecteurFichierBinaire.create('C:\RepertoireTest\Test.jpg');
+      unFichierBinaire := LecteurFichierBinaire.create('testLecteurFichierBinaire.jpg');
 
       check(unFichierBinaire.getType := 'image/jpeg');
 
       unFichierBinaire.destroy;
+    end;
 
-      unFichierBinaire := LecteurFichierBinaire.create('C:\RepertoireTest\Test.gif');
+    procedure TestLecteurFichierBinaire.testGetTypeJpeg;
+    var
+      unFichierBinaire : LecteurFichierBinaire;
+    begin
+      unFichierBinaire := LecteurFichierBinaire.create('testLecteurFichierBinaire.jpeg');
+
+      check(unFichierBinaire.getType := 'image/jpeg');
+
+      unFichierBinaire.destroy;
+    end;
+
+    procedure testGetTypeGif;
+    var
+      unFichierBinaire : LecteurFichierBinaire;
+    begin
+      unFichierBinaire := LecteurFichierBinaire.create('testLecteurFichierBinaire.gif');
 
       check(unFichierBinaire.getType := 'image/gif');
 
       unFichierBinaire.destroy;
+    end;
 
-      unFichierBinaire := LecteurFichierBinaire.create('C:\RepertoireTest\Test.fdasoijfadsio');
+    procedure TestLecteurFichierBinaire.testGetTypeAutres;
+    var
+      unFichierBinaire : LecteurFichierBinaire;
+    begin
+      unFichierBinaire := LecteurFichierBinaire.create('testLecteurFichierBinaire.PFUDOR');
 
       check(unFichierBinaire.getType := 'application/octet-stream');
 
@@ -41,7 +65,7 @@ implementation
     var
       unFichierBinaire : LecteurFichierBinaire;
     begin
-      unFichierBinaire := LecteurFichierBinaire.create('C:\RepertoireTest\inexistant.jpg');
+      unFichierBinaire := LecteurFichierBinaire.create('inexistant.jpg');
 
       try
         unFichierBinaire.lireContenu;
@@ -59,12 +83,7 @@ implementation
       fichier : TextFile;
 
     begin
-      assignFile(fichier, 'C:\RepertoireTest\Test.txt');
-      rewrite(fichier);
-      writeln(fichier, '12345678');
-      close(fichier);
-
-      unFichierBinaire := LecteurFichierBinaire.create('C:\RepertoireTest\Test');
+      unFichierBinaire := LecteurFichierBinaire.create('testLecteurFichierBinaire.txt');
 
       check(unFichierBinaire.lireContenu := '12345678');
 

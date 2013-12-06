@@ -9,7 +9,8 @@ uses
   uniteTestReponse in 'uniteTestReponse.pas',
   uniteTestRequete in 'uniteTestRequete.pas',
   uniteTestServeur in 'uniteTestServeur.pas',
-  uniteConsigneurStub in 'stubs\uniteConsigneurStub.pas';
+  uniteConsigneurStub in 'stubs\uniteConsigneurStub.pas',
+  uniteTestLecteurFichierBinaire in 'uniteTestLecteurFichierBinaire.pas';
 
 {$R *.res}
 

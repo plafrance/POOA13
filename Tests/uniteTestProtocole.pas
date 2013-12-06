@@ -221,53 +221,9 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     protocoleHTTP:Protocole;
   begin
     leConsigneur:= ConsigneurStub.create('');
-    protocoleHTTP:=Protocole.create('4
+    protocoleHTTP:=Protocole.create('4', leConsigneur);
     protocoleHTTP.setRepertoireDeBase('C:\UnAutreRepertoire\');
     check(protocoleHTTP.getRepertoireDeBase='C:\UnAutreRepertoire\');
-  end;
-
-  procedure TestProtocole.testLecteurFichier;
-  var
-    leConsigneur : Consigneur;
-    protocoleHTTP : Protocole;
-    uneReponse : Reponse;
-    uneRequete : Requete;
-  begin
-    uneRequete := Requete.create(100.1.0.100, now, 'HTTP/1.1', 'GET', 'test.html');
-    leConsigneur := ConsigneurStub.create('');
-    protocoleHTTP := Protocole.create('C:\RepertoireTest\fichierTest\test.html',leConsigneur);
-
-    uneReponse := protocoleHTTP.traiterRequete(uneRequete);
-
-    check(uneReponse.getCodeReponse := 200);
-
-    protocoleHTTP.destroy;
-    uneReponse.destroy;
-    uneRequete.destroy;
-    unConsigneur.destroy;
-  end;
-
-  procedure TestProtocole.testLecteurFichier;
-    var
-    leConsigneur : Consigneur;
-    protocoleHTTP : Protocole;
-    uneReponse : Reponse;
-    uneRequete : Requete;
-  begin
-    uneRequete := Requete.create(100.1.0.100, now, 'HTTP/1.1', 'GET', 'inexistant.html');
-    leConsigneur := ConsigneurStub.create('');
-    protocoleHTTP := Protocole.create('C:\RepertoireTest\fichierTest\',leConsigneur);
-
-    uneReponse := protocoleHTTP.traiterRequete(uneRequete);
-    
-    fail('Le fichier n''existe pas);
-    check(e.message := 'Erreur Entrée / Sortie');
-
-    protocoleHTTP.destroy;
-    uneReponse.destroy;
-    uneRequete.destroy;
-    unConsigneur.destroy;
-
   end;
 
 initialization
