@@ -17,6 +17,7 @@ type
      procedure testCreateTemoin;
      procedure testCreateRepertoireInexistant;
      procedure testSetRepertoire;
+     procedure testLecteurFichier;
   end;
 
 implementation
@@ -220,7 +221,7 @@ procedure TestProtocole.testTraiterRequeteMethodeGetMinuscule;
     protocoleHTTP:Protocole;
   begin
     leConsigneur:= ConsigneurStub.create('');
-    protocoleHTTP:=Protocole.create('C:\RepertoireTest\',leConsigneur);
+    protocoleHTTP:=Protocole.create('4', leConsigneur);
     protocoleHTTP.setRepertoireDeBase('C:\UnAutreRepertoire\');
     check(protocoleHTTP.getRepertoireDeBase='C:\UnAutreRepertoire\');
   end;
