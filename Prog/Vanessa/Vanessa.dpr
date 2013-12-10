@@ -5,15 +5,18 @@ program Vanessa;
 
 
 uses
-   SysUtils,
-   uniteServeur in 'uniteServeur.pas',
-   uniteRequete in 'uniteRequete.pas',
-   uniteProtocole in 'uniteProtocole.pas',
-   uniteReponse in 'uniteReponse.pas',
-   uniteConnexion in 'uniteConnexion.pas',
-   uniteConnexionHTTPServeur in 'uniteConnexionHTTPServeur.pas',
-   SocketUnit in 'SocketUnit.pas',
-   uniteConsigneur in 'uniteConsigneur.pas';
+  SysUtils,
+  uniteServeur in 'uniteServeur.pas',
+  uniteRequete in 'uniteRequete.pas',
+  uniteProtocole in 'uniteProtocole.pas',
+  uniteReponse in 'uniteReponse.pas',
+  uniteConnexion in 'uniteConnexion.pas',
+  uniteConnexionHTTPServeur in 'uniteConnexionHTTPServeur.pas',
+  SocketUnit in 'SocketUnit.pas',
+  uniteConsigneur in 'uniteConsigneur.pas',
+  uniteLecteurFichierTexte in 'uniteLecteurFichierTexte.pas',
+  uniteLecteurFichier in 'uniteLecteurFichier.pas',
+  uniteLecteurFichierBinaire in 'uniteLecteurFichierBinaire.pas';
 
 const
    nomServeur = 'Vanessa';
