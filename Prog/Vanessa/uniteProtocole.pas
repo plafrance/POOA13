@@ -3,7 +3,7 @@ unit uniteProtocole;
 interface
 
 uses
-   SysUtils, uniteReponse, uniteRequete, uniteConsigneur;
+   SysUtils, uniteReponse, uniteRequete, uniteConsigneur, uniteLecteurFichier, uniteLecteurFichierBinaire, uniteLecteurFichierTexte;
 
 //Traite les requêtes HTTP et fournit une réponse appropriée selon l'état du serveur
 type
@@ -14,6 +14,9 @@ type
 
       //Un consigneur permettant de consigner tous les messages
       leConsigneur:Consigneur;
+
+      //LecteurFichier que l'on pourra Transtyper
+      unLecteurFichier:LecteurFichier;
 
    public
       //La methode traiterRequete analyse la requete et renvoie le code approprié au fureteur.
@@ -74,45 +77,38 @@ begin
 
    uneAdresseDemandeur:=uneRequete.getAdresseDemandeur;
    uneVersionProtocole:='HTTP/1.1';
-   unCodeReponse:=404;
-   unMessage:='L''URL introuvable';
-   uneReponseHTML:='L''URL ('+uneRequete.getUrl+') n''existe pas sur le serveur, veuillez verifier l''orthographe et reessayer';
-
 
    //Vérification de la méthode
    //Reception de la requete
    if fileExists(repertoireDeBase+uneRequete.getUrl)then
    begin
-      // / ou \ a verifier
-      assignFile(unFichier,repertoireDeBase+uneRequete.getUrl);
-      try
-         reset(unFichier);
-        unCodeReponse:=200;
-        unMessage:='OK';
-        uneReponseHtml := '';
-        while not eof (unFichier) do
-          begin
-            try
-              readln(unFichier,uneLigne);
-            except on e :Exception do
-              begin
-                unCodeReponse:=500;
-                unMessage:='erreur interne du serveur';
-                leConsigneur.consignerErreur('unProtocoleHTTP','impossible de lire la page demandée');
-              end;
-            end;
-          uneReponseHtml:=uneReponseHtml+uneLigne+#13; //chr(13)
-        end;
-        close(unFichier);
-      except on e :Exception do
+    unCodeReponse:=200;
+    unMessage:='OK';
+    if (upCase(extractFileExt(repertoireDeBase+uneRequete.getUrl)) = '.HTML')
+    or (upCase(extractFileExt(repertoireDeBase+uneRequete.getUrl)) = '.XML') then
+      unLecteurFichier:=lecteurFichierTexte.create
+    else
+      unLecteurFichier:=lecteurFichierBinaire.create;
+    try
+      if unLecteurFichier is lecteurFichierTexte then
+        ReponseHtml:=unLecteurFichier.getEntete+#13+#13+lecteurFichierTexte(unLecteurFichier).lireContenu;
+      if unLecteurFichier is lecteurFichierTexte then
+        ReponseHtml:=unLecteurFichier.getEntete+#13+#13+lecteurFichierBinaire(unLecteurFichier).lireContenu;
+    except on e:Exception do
       begin
-         unCodeReponse:=500;
-         unMessage:='erreur interne du serveur';
-         leConsigneur.consignerErreur('ProtocoleHTTP','impossible d''ouvrir la page demandée'+e.message);
+        unCodeReponse:=500;
+        unMessage:='erreur interne du serveur';
+        leConsigneur.consignerErreur('unProtocoleHTTP','impossible de lire la page demandée');
       end;
-      end;
+    end;
+   unLecteurFichier.destroy;
+   end
+   else
+   begin
+    unCodeReponse:=404;
+    unMessage:='URL introuvable';
+    uneReponseHTML:='L''URL ('+uneRequete.getUrl+') n''existe pas sur le serveur, veuillez verifier l''orthographe et reessayer';
    end;
-
 
    if (uneRequete.getMethode<>uppercase('GET')) then
    begin
@@ -120,8 +116,6 @@ begin
       unMessage:='Methode non implémentée';
       uneReponseHTML:=('La methode '+uneRequete.getMethode+' n''est pas implémentée');
    end;
-
-
 
    //Utilisation d'un subString pour vérifier HTTP/ seulement
 
@@ -156,16 +150,16 @@ begin
 
    result:=uneReponse;
 
-
    //Case of pour ainsi consigner une seule fois dépendament de la variable unCodeReponse
    Case unCodeReponse of
+   200:leConsigneur.consigner('ProtocoleHTTP', uneReponse.getAdresseDemandeur+' – 200 : '+uneReponse.getMessage);
+   500:leConsigneur.consignerErreur('ProtocoleHTTP','impossible d''ouvrir la page demandée');
    501:leConsigneur.consigner('ProtocoleHTTP','La méthode '+uneRequete.getMethode+' n''est pas implémentée');
    505:leConsigneur.consigner('ProtocoleHTTP','Version HTTP'+uneRequete.getVersionProtocole+'incompatible avec le serveur');
-   404:leConsigneur.consigner('ProtocoleHTTP',uneReponse.getAdresseDemandeur + IntToStr(unCodeReponse) +':'+uneReponse.getMessage);
+   404:leConsigneur.consigner('ProtocoleHTTP',uneReponse.getAdresseDemandeur +' - 404 : '+uneReponse.getMessage);
    else leConsigneur.consignerErreur('ProtocoleHTTP','Erreur interne du serveur');
    end;
 end;
-
 
 
 constructor Protocole.create(unRepertoireDeBase:String;unConsigneur:Consigneur);
@@ -183,6 +177,7 @@ function Protocole.getRepertoireDeBase:String;
 begin
    result:=repertoireDeBase;
 end;
+
 
 procedure Protocole.setRepertoireDeBase(unRepertoireDeBase:String);
 begin
