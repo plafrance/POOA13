@@ -65,8 +65,6 @@ var
    unMessage:String;
    uneReponseHtml:String;
    stringTemporaire:String;
-   unFichier:Textfile;
-   uneLigne:String;
 begin
 
    //write('[', formatDateTime('c',uneRequete.getDateReception), ']',' ', uneRequete.getAdresseDemandeur,' ', uneRequete.getMethode,' ', uneRequete.getUrl,' ', uneRequete.getVersionProtocole);
@@ -84,16 +82,16 @@ begin
    begin
     unCodeReponse:=200;
     unMessage:='OK';
-    if (upCase(extractFileExt(repertoireDeBase+uneRequete.getUrl)) = '.HTML')
-    or (upCase(extractFileExt(repertoireDeBase+uneRequete.getUrl)) = '.XML') then
-      unLecteurFichier:=lecteurFichierTexte.create
+    if (AnsiUpperCase(extractFileExt(repertoireDeBase+uneRequete.getUrl)) = '.HTML')
+    or (AnsiUpperCase(extractFileExt(repertoireDeBase+uneRequete.getUrl)) = '.XML') then
+      unLecteurFichier:=lecteurFichierTexte.create(repertoireDeBase+uneRequete.getUrl)
     else
-      unLecteurFichier:=lecteurFichierBinaire.create;
+      unLecteurFichier:=lecteurFichierBinaire.create(repertoireDeBase+uneRequete.getUrl);
     try
       if unLecteurFichier is lecteurFichierTexte then
-        ReponseHtml:=unLecteurFichier.getEntete+#13+#13+lecteurFichierTexte(unLecteurFichier).lireContenu;
+        uneReponseHtml:=unLecteurFichier.getEntete+#13+#13+lecteurFichierTexte(unLecteurFichier).lireContenu;
       if unLecteurFichier is lecteurFichierTexte then
-        ReponseHtml:=unLecteurFichier.getEntete+#13+#13+lecteurFichierBinaire(unLecteurFichier).lireContenu;
+        uneReponseHtml:=unLecteurFichier.getEntete+#13+#13+lecteurFichierBinaire(unLecteurFichier).lireContenu;
     except on e:Exception do
       begin
         unCodeReponse:=500;
