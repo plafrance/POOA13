@@ -15,9 +15,6 @@ type
       //Un consigneur permettant de consigner tous les messages
       leConsigneur:Consigneur;
 
-      //LecteurFichier que l'on pourra Transtyper
-      unLecteurFichier:LecteurFichier;
-
    public
       //La methode traiterRequete analyse la requete et renvoie le code approprié au fureteur.
       //Elle  reçoit la requete envoyée par le fureteur en paramètre et retourne un objet de type Reponse.
@@ -37,6 +34,7 @@ type
       //
       //@param unRepertoireDeBase le répertoire qui contient tous les sites web de notre serveur
       //@param unConsigneur sert à consigner des messages
+      //@raises Exception exception de message 'Repertoire de Base inexistant' levée si le repertoireDeBase donné en paramètre n'existe pas
       constructor create(unRepertoireDeBase:String;unConsigneur:Consigneur);
 
       //Accesseur du répertoire de base
@@ -48,7 +46,7 @@ type
       //Mutateur du répertoire de base
       //
       //@param unRepertoire le répertoire de base
-
+      //@raises Exception exception de message 'Version HTTP incompatible' levée si la versionProtocole n'est pas du format HTTP/x.y où x et y sont entre 0 et 9.
       procedure setRepertoireDeBase(unRepertoireDeBase:String);
 
    end;
@@ -65,6 +63,8 @@ var
    unMessage:String;
    uneReponseHtml:String;
    stringTemporaire:String;
+   //LecteurFichier que l'on pourra Transtyper
+   unLecteurFichier:LecteurFichier;
 begin
 
    //write('[', formatDateTime('c',uneRequete.getDateReception), ']',' ', uneRequete.getAdresseDemandeur,' ', uneRequete.getMethode,' ', uneRequete.getUrl,' ', uneRequete.getVersionProtocole);
@@ -90,7 +90,7 @@ begin
     try
       if unLecteurFichier is lecteurFichierTexte then
         uneReponseHtml:=unLecteurFichier.getEntete+#13+#13+lecteurFichierTexte(unLecteurFichier).lireContenu;
-      if unLecteurFichier is lecteurFichierTexte then
+      if unLecteurFichier is lecteurFichierBinaire then
         uneReponseHtml:=unLecteurFichier.getEntete+#13+#13+lecteurFichierBinaire(unLecteurFichier).lireContenu;
     except on e:Exception do
       begin
@@ -162,12 +162,11 @@ end;
 
 constructor Protocole.create(unRepertoireDeBase:String;unConsigneur:Consigneur);
 begin
-   setRepertoireDeBase(unRepertoireDeBase);
-   leConsigneur:=unConsigneur;
    //Verifie si le repertoire existe et affecte a la variable code le numero de code si le repertoire existe ou pas
    if not directoryExists(unRepertoireDeBase)then
     raise Exception.create('Repertoire de Base inexistant');
-
+   setRepertoireDeBase(unRepertoireDeBase);
+   leConsigneur:=unConsigneur;
 end;
 
 

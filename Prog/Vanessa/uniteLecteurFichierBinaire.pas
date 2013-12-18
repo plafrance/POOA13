@@ -17,6 +17,7 @@ LecteurFichierBinaire = class (LecteurFichier)
    //Accesseur du contenu du fichier au format de chaîne de caractère long (le format, pas le caractère). Retourne image/jpeg pour les .jpg/.jpeg, image/gif pour les .gif, et application/octet-stream pour tout autre type. 
 
    //@return le contenu du fichier lu sous sa forme brute (octets) et retourné transposé en chaîne de caractères.
+   //@raises exception exception levée si il y a une erreur lors de la lecture du fichier (ouverture du fichier inclut)
    function lireContenu : Widestring; override;
 
 end;
@@ -45,7 +46,7 @@ implementation
          blockRead(fichier, tableauCar, 1);
          close(fichier);
       except on e : Exception do
-         raise Exception.Create('Problème lors de la lecture du fichier');
+         raise Exception.create('Problème lors de la lecture du fichier');
       end;
       result:='';
       for i:=0 to high(tableauCar) do
